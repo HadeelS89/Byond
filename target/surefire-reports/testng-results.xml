@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-07-03T21:37:10 EEST" name="Student Test Suite" finished-at="2022-07-03T21:37:11 EEST" duration-ms="533">
+    <groups>
+    </groups>
+    <test started-at="2022-07-03T21:37:10 EEST" name="Admit New Student With EID - Send For Approval" finished-at="2022-07-03T21:37:11 EEST" duration-ms="533">
+      <class name="Beyon.Command.Cases.TC01_EdgeCase_RidgeModel">
+        <test-method signature="testHadeel(java.lang.String)[pri:0, instance:Beyon.Command.Cases.TC01_EdgeCase_RidgeModel@3383649e]" started-at="2022-07-03T21:37:10 EEST" name="testHadeel" description="test data " finished-at="2022-07-03T21:37:11 EEST" duration-ms="443" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CmdTest]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHadeel -->
+        <test-method signature="test2(java.lang.String)[pri:1, instance:Beyon.Command.Cases.TC01_EdgeCase_RidgeModel@3383649e]" started-at="2022-07-03T21:37:11 EEST" name="test2" description="test data2 " finished-at="2022-07-03T21:37:11 EEST" duration-ms="61" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[CmdTest2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+      </class> <!-- Beyon.Command.Cases.TC01_EdgeCase_RidgeModel -->
+    </test> <!-- Admit New Student With EID - Send For Approval -->
+  </suite> <!-- Student Test Suite -->
+</testng-results>

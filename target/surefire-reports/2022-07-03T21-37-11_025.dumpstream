@@ -1,0 +1,9 @@
+# Created at 2022-07-03T21:37:11.110
+Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
+
+# Created at 2022-07-03T21:37:11.181
+docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+
+# Created at 2022-07-03T21:37:11.181
+See 'docker run --help'.
+
