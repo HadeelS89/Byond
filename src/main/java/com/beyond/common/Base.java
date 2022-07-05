@@ -25,14 +25,20 @@ public class Base {
     public static WebDriver driver;
     public static String environment = "";
     public static String downloadDir = System.getProperty("user.dir") + "\\src\\main\\resources\\DataProvider";
-public static boolean isWeb= false;
 
-    @Parameters({"browserType", "url"})
+
+   // mvn clean install -Dfile=WebTest.xml -Dproject_name=byonH -Dimage_name=testH -Dbuild_number=12 -DenvUrl=https://www.google.com/
+
+
+    @Parameters({"browserType"})
     @BeforeClass(enabled = true)
 
     public void setUpBrowser(@Optional("optional")
-                                   String browserType, @Optional("tst") String url) {
+                                   String browserType) {
 
+
+String envUrl=System.getProperty("envUrl");
+        System.out.println("-----" + envUrl);
             if (!browserType.equals("optional")) {
                 initiateDriver(OsValidator.getDeviceOs(), browserType);
                 // initiateDriver();
@@ -41,27 +47,17 @@ public static boolean isWeb= false;
             }
             // this to determine the url needed
             // if it not created as param on xml file then use the else
-            if (url.equalsIgnoreCase("tst")) {
+            if (envUrl.equalsIgnoreCase("")) {// nul default
                 driver.navigate().to(ReadWriteHelper.ReadData("eSISClient"));
 
-                System.out.println("URL for test");
-                environment = "tst";
+
                 ReadWriteHelper.writeEnvironment(environment);
                 System.out.println("environment = " + environment);
+            }else{// from pom.xm then mvn -D
+
+                driver.navigate().to(envUrl);
             }
-            // created as param on xml suite for staging
-            else if (url.equalsIgnoreCase("stg")) {
-                driver.navigate().to(ReadWriteHelper.ReadData("eSISStaging"));
-                System.out.println("URL for staging");
-                environment = "stg";
-                ReadWriteHelper.writeEnvironment(environment);
-            } else {
-// created as param on xml suite for staging  for pre prod
-                driver.navigate().to(ReadWriteHelper.ReadData("eSISPreProd"));
-                System.out.println("URL for pre prod");
-                environment = "pre_prod";
-                ReadWriteHelper.writeEnvironment(environment);
-            }
+
 
 
     }

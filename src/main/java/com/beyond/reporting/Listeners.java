@@ -1,5 +1,11 @@
 package com.beyond.reporting;
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.beyond.common.Base;
@@ -14,6 +20,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import javax.mail.MessagingException;
 import java.io.File;
@@ -22,10 +30,15 @@ import java.security.GeneralSecurityException;
 
 public class Listeners extends TestListenerAdapter {
 
-    private static ExtentReports extent;
+
+      static   String projectName2="";
+   static String buildNumber="";
+    static String imageNumber="";
+    private  static ExtentReports extent;
 
     static {
         try {
+
             extent = ExtentManager.createInstance();
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
@@ -34,6 +47,14 @@ public class Listeners extends TestListenerAdapter {
         }
     }
 
+
+
+
+//    @Parameters({"PROJECT_NAME","BUILD_NUMBER"})
+//    public  Listeners(String PROJECT_NAME, String BUILD_NUMBER) throws MessagingException, GeneralSecurityException {
+//
+//         extent = ExtentManager.createInstance( PROJECT_NAME, BUILD_NUMBER);
+//    }
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
     ExceptionListner exceptionListener = new ExceptionListner();
     public static boolean CONSOLE;
@@ -58,15 +79,60 @@ public class Listeners extends TestListenerAdapter {
         }
         extent.flush();
 
-        String imagePath = "src/main/resources/Reports/"+ActionsHelper.screenShots(ExtentManager.reportFileName);
+
+
 
         String reportPath = "src/main/resources/Reports/" + ExtentManager.reportFileName;
-        test.get().fail("Screen Shot : " + test.get().addScreenCaptureFromPath(imagePath));
-        if (ReadWriteHelper.ReadData("SendMail").equalsIgnoreCase("true")) {
-            EmailHelper.sendEmail(ReadWriteHelper.ReadData("EmailsTo"), reportPath );
-          //  EmailHelper.sendEmail(ReadWriteHelper.ReadData("EmailsTo"),imagePath );// to send single screen shot
-            EmailHelper.sendEmailScreenShots(ReadWriteHelper.ReadData("EmailsTo") );
+
+        /*
+
+       // get mage on failed if web project
+    if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
+    // for images om web
+    String imagePath = "src/main/resources/Reports/" + ActionsHelper.screenShots(ExtentManager.reportFileName);
+    test.get().fail("Screen Shot : " + test.get().addScreenCaptureFromPath(imagePath));
+
+    }
+
+
+
+    //send email
+    if (ReadWriteHelper.ReadData("SendMail").equalsIgnoreCase("true")) {
+            EmailHelper.sendEmail(ReadWriteHelper.ReadData("EmailsTo"), reportPath);
+            //  EmailHelper.sendEmail(ReadWriteHelper.ReadData("EmailsTo"),imagePath );// to send single screen shot
+            EmailHelper.sendEmailScreenShots(ReadWriteHelper.ReadData("EmailsTo"));
+
         }
+
+
+         */
+
+            // uncomment AWS righter
+            AWSCredentials credentials = new BasicAWSCredentials(
+                    ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "username"),
+                    ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "password")
+            );
+            final AmazonS3 s3client = AmazonS3ClientBuilder
+                    .standard()
+                    .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                    .withRegion(Regions.EU_WEST_1)
+                    .build();
+
+
+
+
+        s3client.putObject("bl-mlops-qa-reports-website",
+                "reports/"+ExtentManager.reportFileNameNew,
+                new File(reportPath));
+
+
+
+
+
+
+
+
+
 
     }
 
@@ -101,28 +167,35 @@ public class Listeners extends TestListenerAdapter {
 
         test.get().fail(exceptionListener.checkException(result.getThrowable().toString()));
 
+
 /*
-        TakesScreenshot ts = ((TakesScreenshot) Base.driver);
-        File srcFile = ts.getScreenshotAs(OutputType.FILE);
-        String base64Image = ts.getScreenshotAs(OutputType.BASE64);
+        // take screenshot if failed
+if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
+    TakesScreenshot ts = ((TakesScreenshot) Base.driver);
+    File srcFile = ts.getScreenshotAs(OutputType.FILE);
+    String base64Image = ts.getScreenshotAs(OutputType.BASE64);
 //ScreenshotHelper.encodeFileToBase64Binary(srcFile);
 
 
-        try {
+    try {
 
-            FileUtils.copyFile(srcFile, new File(
-                    "src/main/resources/Reports/" + ExtentManager.reportFileName + result.
-                            getName() + ".PNG"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileUtils.copyFile(srcFile, new File(
+                "src/main/resources/Reports/" + ExtentManager.reportFileName+"_" + result.
+                        getName() + ".PNG"));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
 
-        // takeScreenShot(result);
+    // takeScreenShot(result);
 
-        String imageName = ExtentManager.reportFileName + result.getName() + ".PNG";
-        test.get().fail("Screen Shot : " + test.get().addScreenCaptureFromPath(imageName));
+    String imageName = ExtentManager.reportFileName + result.getName() + ".PNG";
+    test.get().fail("Screen Shot : " + test.get().addScreenCaptureFromPath(imageName));
 
 
+
+}
+
+\
  */
     }
 
@@ -167,5 +240,9 @@ public class Listeners extends TestListenerAdapter {
         }
         return path + "_" + imageName + "." + "jpeg";
     }
+
+
+
+
 }
 

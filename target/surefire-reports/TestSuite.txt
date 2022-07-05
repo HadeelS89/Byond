@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.293 s - in TestSuite
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 139.835 s <<< FAILURE! - in TestSuite
+addNewStudentWithNoEID(Beyond.Web.cases.InfillAdvisorTest)  Time elapsed: 60.157 s  <<< FAILURE!
+org.openqa.selenium.NoSuchWindowException: 
+no such window: window was already closed
+  (Session info: chrome=103.0.5060.53)
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Hadeel-Salamehs-MacBook-Pro.local', ip: '2a01:9700:1089:6b00:6461:ec00:a711:ac84%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.2', java.version: '11.0.15.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 103.0.5060.53, chrome: {chromedriverVersion: 103.0.5060.53 (a1711811edd7..., userDataDir: /var/folders/9l/mz27979n6y9...}, goog:chromeOptions: {debuggerAddress: localhost:58125}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 9e6ef63f5717c1e050eef6fc9dcc7825
+*** Element info: {Using=id, value=TextField2}
+	at Beyond.Web.cases.InfillAdvisorTest.addNewStudentWithNoEID(InfillAdvisorTest.java:26)
+
+clickAddNewProject(Beyond.Web.cases.InfillAdvisorTest)  Time elapsed: 61.785 s  <<< FAILURE!
+org.openqa.selenium.NoSuchWindowException: 
+no such window: window was already closed
+  (Session info: chrome=103.0.5060.53)
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Hadeel-Salamehs-MacBook-Pro.local', ip: '2a01:9700:1089:6b00:6461:ec00:a711:ac84%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.2', java.version: '11.0.15.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 103.0.5060.53, chrome: {chromedriverVersion: 103.0.5060.53 (a1711811edd7..., userDataDir: /var/folders/9l/mz27979n6y9...}, goog:chromeOptions: {debuggerAddress: localhost:58125}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 9e6ef63f5717c1e050eef6fc9dcc7825
+*** Element info: {Using=xpath, value=//span[starts-with (@class,'ms-Button') and contains (text(), 'New Project')]}
+	at Beyond.Web.cases.InfillAdvisorTest.clickAddNewProject(InfillAdvisorTest.java:37)
+

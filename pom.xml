@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <!-- Test Profiles, define URL for AUT, Browser and Test Suites -->
+
     <profiles>
         <!-- Development environment @ my local machine -->
         <profile>
@@ -21,6 +22,9 @@
                 <testToRun>**/*ExtenderRunner*.class</testToRun>
                 <maven.compiler.source>11</maven.compiler.source>
                 <maven.compiler.target>11</maven.compiler.target>
+
+
+
             </properties>
         </profile>
         <!-- Single Test -->
@@ -33,6 +37,8 @@
         </profile>
     </profiles>
 <properties>
+
+    <!-- pass environmet variable here  -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 </properties>
     <dependencies>
@@ -53,7 +59,11 @@
             <version>5.7.2</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.12.238</version>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -288,10 +298,20 @@
                         <suiteXmlFiles>
                             <file>src/main/resources/xmlTests/Beyond/${file}</file>
                         </suiteXmlFiles>
+                        <systemPropertyVariables>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <project_name>${project_name}</project_name>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <image_name>${image_name}</image_name>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <build_number>${build_number}</build_number>
+                            <!--suppress UnresolvedMavenProperty -->
+                            <envUrl>${env}</envUrl>
+                        </systemPropertyVariables>
                         <testFailureIgnore>false</testFailureIgnore>
+
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>

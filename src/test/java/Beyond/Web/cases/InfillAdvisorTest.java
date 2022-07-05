@@ -40,7 +40,7 @@ public class InfillAdvisorTest extends Base {
     }
 
 
-    @Test(description = "Fill description field with metric Systems ", priority = 2,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
+  //  @Test(description = "Fill description field with metric Systems ", priority = 2,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
     public void fillDescription_tab_metric_system(){
         advisorActions = new AdvisorActions(driver);
         advisorActions.description_MetricSys();
@@ -48,7 +48,7 @@ public class InfillAdvisorTest extends Base {
 
     }
 
-    @Test(description = "Data upload for Well Data ", priority = 3,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
+  //  @Test(description = "Data upload for Well Data ", priority = 3,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
     public void upload_WellData(){
         advisorActions = new AdvisorActions(driver);
         advisorActions.upload_WellData();

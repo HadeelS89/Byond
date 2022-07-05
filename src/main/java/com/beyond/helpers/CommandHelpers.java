@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
@@ -29,7 +30,8 @@ public class CommandHelpers {
 
         ProcessBuilder processBuilder = new ProcessBuilder();
 
-        processBuilder.command(dockerDirPath, "run" , "--rm", "-v", projectDir, "-v", "/Volumes:/Volumes", "-p", "8501:8501", "--name=container", buildNumberPath, infillCommand).inheritIO();
+        processBuilder.command(dockerDirPath, "run" , "--rm", "-v", projectDir, "-v", "/Volumes:/Volumes", "-p", "8501:8501", "--name=container", buildNumberPath, infillCommand)
+                .inheritIO();
 
         File file;
 
@@ -58,36 +60,103 @@ public class CommandHelpers {
 
 
     public static String containerID;
-        public static void runDockerCommand(String Command) throws IOException, InterruptedException
-        {
-            String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
+        public static void runDockerCommand1(String Command) throws IOException, InterruptedException {
+            // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
 
             ProcessBuilder processBuilder = new ProcessBuilder(Command.split("\\s+")).inheritIO();
-           // System.out.println( "H test ");
 
 
             Process process = processBuilder.start();
+
+
             process.waitFor();
 
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            System.out.println(reader.readLine());
+            try {
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                System.out.println("Reader line " + reader.readLine());
+
+
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    System.out.println("line h= " + line);
+                }
+
+                int exitCode = process.waitFor();
+                System.out.println("\nExited with error code : " + exitCode);
+
+                int expectedExistCode = 0;
+                int actualExistCode = exitCode;
+                //Assert.assertEquals(expectedExistCode, actualExistCode);
+
+            } catch (Exception e) {
+
+
             }
 
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-            int expectedExistCode= 0;
-            int actualExistCode = exitCode;
-            //Assert.assertEquals(expectedExistCode, actualExistCode);
-
-
-
         }
+
+    public static void runDockerCommandWithoutSplit(String Command) throws IOException, InterruptedException {
+        // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
+ProcessBuilder processBuilder =new ProcessBuilder();
+        processBuilder.command("/usr/local/bin/docker images ",Command).inheritIO();
+
+
+        Process process = processBuilder.start();
+
+
+        process.waitFor();
+
+
+    }
+
+ public static void main(String[] args) throws IOException, InterruptedException {
+    runDockerCommandWithoutSplit(" awk '{print $1}'  awk 'NR==2'");
+}
+//get all the images
+    public static void runDocker_firstCommand(String Command) throws IOException, InterruptedException {
+                // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
+
+//clear the file before run
+                ReadWriteHelper.clearTheFile(System.getProperty("user.dir") +
+                        "/src/main/resources/DataProvider/ActualResults.txt");
+                ProcessBuilder processBuilder = new ProcessBuilder(Command.split("\\s+")).inheritIO();
+
+
+
+
+               File file = new File(System.getProperty("user.dir") +
+                       "/src/main/resources/DataProvider/ActualResults.txt");
+
+                processBuilder.redirectErrorStream(true);
+
+                processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file));
+               // processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file))
+                Process process = processBuilder.start();
+
+                process.waitFor();
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+                    System.out.println(line);
+
+                }
+
+
+
+//                String contents = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") +
+//                        "/src/main/resources/DataProvider/ActualResults.txt")));
+               // System.out.println("hadeel test "+contents);
+                exitCode = process.waitFor();
+
+
+            }
+
 
         public static void getContainerID(String Command) throws IOException, InterruptedException
         {

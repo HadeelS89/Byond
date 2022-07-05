@@ -1,5 +1,7 @@
 package com.beyond.helpers;
 
+import com.amazonaws.services.ecs.model.DockerVolumeConfiguration;
+import com.beyond.reporting.ExtentManager;
 import com.paulhammant.ngwebdriver.NgWebDriver;
 import com.beyond.common.Base;
 import com.beyond.pagesORCmds.Data;
@@ -23,6 +25,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import javax.swing.text.MaskFormatter;
 
 public class ActionsHelper extends Base {
     private static final Logger LOGGER = LogManager.getLogger(Thread.currentThread().getStackTrace()[0].getClassName());
@@ -1008,14 +1012,22 @@ public class ActionsHelper extends Base {
 
     public static String projectName(){
 
-        String proj=  System.getProperty("user.dir");
+        String proj=  System.getenv("PWD");
 
         //System.out.println(proj.lastIndexOf("/")+1).trim);
 
     return  proj.substring(proj.lastIndexOf("/") + 1).trim()
             ;}
 
-     public static void main(String[] args) {
-         System.out.println( projectName());
+
+    public static String stringFormatter(String date) throws ParseException {
+
+        MaskFormatter formatter = new MaskFormatter("%s/%s/%s.html");
+        formatter.setValueContainsLiteralCharacters(false);
+
+   return formatter.valueToString(date); }
+
+    public static void main(String[] args) throws ParseException {
+
     }
 }

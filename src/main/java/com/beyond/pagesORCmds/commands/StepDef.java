@@ -4,7 +4,6 @@ package com.beyond.pagesORCmds.commands;
 
 
 import java.io.IOException;
-import java.net.CookieHandler;
 
 import com.beyond.helpers.ReadWriteHelper;
 import com.beyond.helpers.CommandHelpers;
@@ -23,10 +22,27 @@ public class StepDef {
 		//String dockerDirPath = configFileReader.properties.getProperty(prop1);
 		//String loginCommand = ReadWriteHelper.readCommand("loginToDockerCommand");
 		
-		CommandHelpers.runDockerCommand(loginCommand);
+		CommandHelpers.runDocker_firstCommand(loginCommand);
 		
 	}
-	
+
+	public void runDockerCMD1(String loginCommand) throws Exception {
+
+		//String dockerDirPath = configFileReader.properties.getProperty(prop1);
+		//String loginCommand = ReadWriteHelper.readCommand("loginToDockerCommand");
+
+		CommandHelpers.runDockerCommand1(loginCommand);
+
+	}
+	public void runDockerCMD2(String loginCommand) throws Exception {
+
+		//String dockerDirPath = configFileReader.properties.getProperty(prop1);
+		//String loginCommand = ReadWriteHelper.readCommand("loginToDockerCommand");
+
+		CommandHelpers.getContainerID(loginCommand);
+
+	}
+
 	//@When("Start the Container")
 	public void startContainer() throws IOException, InterruptedException
 {
@@ -122,7 +138,7 @@ public class StepDef {
 
 				String deleteCommand = ReadWriteHelper.readCommand("deleteContainer");
 				
-				//CommandHelpers.runDockerCommand(deleteCommand);
+				//CommandHelpers.runDocker_firstCommand(deleteCommand);
 				
 			}
 
@@ -136,7 +152,7 @@ public class StepDef {
 
 				String startCommand = ReadWriteHelper.readCommand("rerunContainer");
 				
-			//	CommandHelpers.runDockerCommand(startCommand);
+			//	CommandHelpers.runDocker_firstCommand(startCommand);
 				
 			}
 			

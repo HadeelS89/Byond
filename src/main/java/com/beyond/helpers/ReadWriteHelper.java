@@ -17,8 +17,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
-import java.util.HashMap;
-import java.util.Properties;
+import java.util.*;
 
 public class ReadWriteHelper {
 
@@ -1095,45 +1094,22 @@ public class ReadWriteHelper {
     }
 
 
-    public static String readParentRequest() {
 
-        String value = "";
 
-        try {
-            //creating a constructor of file class and parsing an XML file
-            File file = new File(System.getProperty("user.dir") +
-                    "/src/main/resources/DataProvider/parentRequestId.xml");
-            //an instance of factory that gives a document builder
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            //an instance of builder to parse the specified xml file
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document doc = db.parse(file);
-            doc.getDocumentElement().normalize();
-            //System.out.println( "Root element: " + doc.getDocumentElement().getNodeName() );
-            NodeList nodeList = doc.getElementsByTagName("environment");
-            // nodeList is not iterable, so we are using for loop
-            for (int itr = 0; itr < nodeList.getLength(); itr++) {
-                Node node = nodeList.item(itr);
-                //System.out.println( "\nNode Name :" + node.getNodeName() );
-                if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) node;
-                    value = eElement.getElementsByTagName("title").item(0).getTextContent();
-                    break;
-                }
 
-            }
+    public static void clearTheFile(String fileName) throws IOException {
+        FileWriter fwOb = new FileWriter(fileName, false);
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return value;
     }
 
-    public static void main (String args[]){
-String s= ReadWriteHelper.getCreatedTransferDate();
-String newdate = s.replaceFirst("^0+(?!$)", "");
-    System.out.println(ReadWriteHelper.
-            getCreatedTransferDate().replaceFirst("^0+(?!$)", ""));
+
+
+
+    public static void main (String args[]) throws IOException {
+
+
 }
 }

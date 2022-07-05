@@ -1,0 +1,4 @@
+REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
+hello-docker   latest    e59a670fe98b   3 days ago    172MB
+<none>         <none>    61a6712078c1   3 days ago    172MB
+ubuntu         latest    a7870fd478f4   4 weeks ago   69.2MB
