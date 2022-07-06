@@ -31,7 +31,7 @@ public class InfillAdvisorTest extends Base {
 
     }
 
-    @Test(description = "Click add new project button", priority = 1 ,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
+   // @Test(description = "Click add new project button", priority = 1 ,retryAnalyzer = com.beyond.helpers.RetryAnalyzer.class)
     public void clickAddNewProject(){
         advisorActions = new AdvisorActions(driver);
         advisorActions.click_addNewProject();

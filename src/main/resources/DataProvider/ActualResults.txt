@@ -1,4 +1,4 @@
-REPOSITORY     TAG       IMAGE ID       CREATED       SIZE
-hello-docker   latest    e59a670fe98b   3 days ago    172MB
-<none>         <none>    61a6712078c1   3 days ago    172MB
-ubuntu         latest    a7870fd478f4   4 weeks ago   69.2MB
+latest: Pulling from library/ubuntu
+Digest: sha256:b6b83d3c331794420340093eb706a6f152d9c1fa51b262d9bf34594887c2c7ac
+Status: Image is up to date for ubuntu:latest
+docker.io/library/ubuntu:latest

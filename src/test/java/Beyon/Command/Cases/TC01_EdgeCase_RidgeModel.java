@@ -1,57 +1,40 @@
 package Beyon.Command.Cases;
 
 import com.beyond.common.Base;
-import com.beyond.helpers.CommandHelpers;
 import com.beyond.helpers.ReadWriteHelper;
+import com.beyond.pagesORCmds.commands.CommandMethods;
 import com.beyond.pagesORCmds.commands.StepDef;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class TC01_EdgeCase_RidgeModel {
-    StepDef stepDef;
+public class TC01_EdgeCase_RidgeModel  {
+    CommandMethods commandMethods;
 
+    @Parameters({"CmdTest0"})
+    @Test(description = "get latest image test  ")
+    public void getImage(String CmdTest0) throws Exception {
 
+        commandMethods = new CommandMethods();
+        String dockerImageNumber = System.getProperty("image_name");//TAG//this need to be added
+        String projectName = System.getProperty("project_name");//image name
 
-    @Parameters({"CmdTest2","PROJECT_NAME"})
-    @Test(description = "gat all images ")
-    public void getAllImages(String CmdTest2,String PROJECT_NAME) throws Exception {
-
-        stepDef = new StepDef();
-
-        System.out.println("PROJECT_NAME" + PROJECT_NAME);
-        stepDef.runDockerCMD(ReadWriteHelper.readCommand(CmdTest2));
+        commandMethods.runDocker_firstCommand(ReadWriteHelper.readCommand(CmdTest0)
+                + " " + projectName);
+        System.out.println("test command = " + ReadWriteHelper.readCommand(CmdTest0) );
     }
 
-    @Parameters({"digestCMd"})
-    @Test(description = "digest images ",priority = 1)
-    public void digestImages(String CmdTest2) throws Exception {
+    @Parameters({"getLatest_Image"})
+    @Test(description = "get latest image test  ")
+    public void getLatestImage(String getLatest_Image) throws Exception {
 
-        stepDef = new StepDef();
+        commandMethods = new CommandMethods();
+        String dockerImageNumber = System.getProperty("image_name");//TAG//this need to be added
+        String projectName = System.getProperty("project_name");//image name
 
-
-        stepDef.runDockerCMD1(ReadWriteHelper.readCommand(CmdTest2));
+        commandMethods.runDocker_firstCommand(ReadWriteHelper.readCommand(getLatest_Image)
+        + " " + projectName +":"+ dockerImageNumber);
+        System.out.println("test command = " + ReadWriteHelper.readCommand(getLatest_Image) );
     }
-    @Parameters({"getImageNme"})
-    @Test(description = "get image name ",priority = 2)
-    public void imageName(String imageName) throws Exception {
-
-        stepDef = new StepDef();
-
-
-        stepDef.runDockerCMD1(ReadWriteHelper.readCommand(imageName));
-    }
-
-
-//    @Parameters({"getImageNme"})
-//    @Test(description = "test data2 ",priority = 1)
-//    public void imageNametest(String imageName) throws Exception {
-//
-//        stepDef = new StepDef();
-//
-//
-//        stepDef.runDockerCMD2(ReadWriteHelper.readCommand(imageName));
-//    }
 
 
 }

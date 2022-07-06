@@ -1,4 +1,3 @@
-/Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/FileHelper.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/BreakException.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/pagesORCmds/WebPages/AdvisorActions.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/pagesORCmds/WebPages/TestH.java
@@ -16,6 +15,7 @@
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/common/OsValidator.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/reporting/StateHelper.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/model/programModel.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/pagesORCmds/commands/CommandMethods.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/common/Base.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/common/DriverType.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/DataBaseHelper.java
@@ -25,4 +25,3 @@
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/ActionsHelper.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/DBHelper.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/RetryAnalyzer.java
-/Users/hsalameh/Desktop/myFrameWork/Byond/src/main/java/com/beyond/helpers/CommandHelpers.java

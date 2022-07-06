@@ -37,30 +37,33 @@ public class Base {
                                    String browserType) {
 
 
-String envUrl=System.getProperty("envUrl");
-        System.out.println("-----" + envUrl);
-            if (!browserType.equals("optional")) {
-                initiateDriver(OsValidator.getDeviceOs(), browserType);
-                // initiateDriver();
-            } else {
-                initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData("browser"));
-            }
-            // this to determine the url needed
-            // if it not created as param on xml file then use the else
-            if (envUrl.equalsIgnoreCase("")) {// nul default
-                driver.navigate().to(ReadWriteHelper.ReadData("eSISClient"));
-
-
-                ReadWriteHelper.writeEnvironment(environment);
-                System.out.println("environment = " + environment);
-            }else{// from pom.xm then mvn -D
-
-                driver.navigate().to(envUrl);
-            }
 
 
 
+    String envUrl = System.getProperty("envUrl");
+    System.out.println("-----" + envUrl);
+    if (!browserType.equals("optional")) {
+        initiateDriver(OsValidator.getDeviceOs(), browserType);
+        // initiateDriver();
+    } else {
+        initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData("browser"));
     }
+    // this to determine the url needed
+    // if it not created as param on xml file then use the else
+    if (envUrl.equalsIgnoreCase("")) {// nul default
+        driver.navigate().to(ReadWriteHelper.ReadData("InfillURL"));
+
+
+        ReadWriteHelper.writeEnvironment(environment);
+        System.out.println("environment = " + environment);
+    } else {// from pom.xm then mvn -D
+
+        driver.navigate().to(envUrl);
+    }
+
+
+}//end is web
+
 
     public WebDriver initiateDriver()
     {
@@ -208,3 +211,9 @@ String envUrl=System.getProperty("envUrl");
     }
 
 }
+/*
+export JAVA_HOME=$(/usr/libexec/java_home -v 11.0.15.1)
+ export M2_HOME=/usr/local/Cellar/maven/3.8.6
+ export PATH=$PATH:$M2_HOME/bin
+
+ */

@@ -14,12 +14,12 @@ com/beyond/utils/Month.class
 com/beyond/helpers/EmailHelper$2.class
 com/beyond/pagesORCmds/WebPages/AdvisorActions.class
 com/beyond/model/programModel.class
-com/beyond/helpers/CommandHelpers.class
 com/beyond/reporting/StateHelper.class
 com/beyond/pagesORCmds/commands/StepDef.class
 com/beyond/common/DriverType.class
 com/beyond/pagesORCmds/authorization_pages/LoginPage.class
 com/beyond/common/Base.class
+com/beyond/pagesORCmds/commands/CommandMethods.class
 com/beyond/helpers/EmailHelper$1.class
 com/beyond/helpers/EmailHelper$EmailFolder.class
 com/beyond/helpers/EmailHelper.class
@@ -28,5 +28,4 @@ com/beyond/helpers/DataBaseHelper.class
 com/beyond/pagesORCmds/WebPages/TestH.class
 com/beyond/utils/RandomString.class
 com/beyond/reporting/ExceptionListner.class
-com/beyond/helpers/FileHelper.class
 com/beyond/helpers/ReadFromExcel.class
