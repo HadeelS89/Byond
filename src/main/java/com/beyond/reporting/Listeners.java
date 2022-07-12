@@ -66,7 +66,7 @@ public class Listeners extends TestListenerAdapter {
 
             System.out.println("Test Suite started!");
         }
-
+       // extent.add("Executing " + context.getCurrentXmlTest().getName());
     }
 
     @SneakyThrows
@@ -106,7 +106,7 @@ public class Listeners extends TestListenerAdapter {
 
 
          */
-
+/*
             // uncomment AWS righter
             AWSCredentials credentials = new BasicAWSCredentials(
                     ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "username"),
@@ -125,12 +125,14 @@ public class Listeners extends TestListenerAdapter {
                 "reports/"+ExtentManager.reportFileNameNew,
                 new File(reportPath));
 
+        System.out.println("s3 report "+ExtentManager.reportFileNameNew);
 
 
 
 
 
 
+ */
 
 
 
@@ -146,8 +148,14 @@ public class Listeners extends TestListenerAdapter {
         }
         ExtentTest extentTest = extent.createTest(result.getMethod().getDescription(),
                 result.getMethod().getMethodName());
+        ExtentTest extentTest2 = extent.createTest(result.getTestClass().getXmlClass().getName(),
+                result.getMethod().getDescription());
+
+       // System.out.println("extent output " + extentTest2);
         test.set(extentTest);
+
     }
+
 
     @Override
     public synchronized void onTestSuccess(ITestResult result) {
@@ -219,8 +227,8 @@ if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
     }
 
     public static void main(String[] args) {
-        String reportPath = "src/main/resources/Reports/" + "QPros-Automation_Report-2020-12-30-1609364868568.html";
-        EmailHelper.sendEmail("mohaidat89@gmail.com", reportPath);
+//        String reportPath = "src/main/resources/Reports/" + "QPros-Automation_Report-2020-12-30-1609364868568.html";
+//        EmailHelper.sendEmail("mohaidat89@gmail.com", reportPath);
     }
 
 

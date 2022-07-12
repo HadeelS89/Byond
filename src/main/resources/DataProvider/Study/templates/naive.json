@@ -1,0 +1,13 @@
+{
+    "name": "Naive",
+    "params":
+        {
+            "scale_features": false,
+            "scale_labels": false
+        },
+    "data":
+        {
+            "train_window": 10,
+            "features": []
+        }
+}

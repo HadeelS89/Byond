@@ -30,18 +30,16 @@ public class Base {
    // mvn clean install -Dfile=WebTest.xml -Dproject_name=byonH -Dimage_name=testH -Dbuild_number=12 -DenvUrl=https://www.google.com/
 
 
-    @Parameters({"browserType"})
+    @Parameters({"browserType","url"})
     @BeforeClass(enabled = true)
 
     public void setUpBrowser(@Optional("optional")
-                                   String browserType) {
-
-
-
+                                   String browserType,@Optional("optional") String url) {
 
 
     String envUrl = System.getProperty("envUrl");
     System.out.println("-----" + envUrl);
+
     if (!browserType.equals("optional")) {
         initiateDriver(OsValidator.getDeviceOs(), browserType);
         // initiateDriver();
@@ -50,7 +48,7 @@ public class Base {
     }
     // this to determine the url needed
     // if it not created as param on xml file then use the else
-    if (envUrl.equalsIgnoreCase("")) {// nul default
+    if (url.equals("optional")) {// nul default
         driver.navigate().to(ReadWriteHelper.ReadData("InfillURL"));
 
 

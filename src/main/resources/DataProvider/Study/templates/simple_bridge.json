@@ -1,0 +1,14 @@
+{
+    "name": "BayesianRidge",
+    "params":
+        {
+            "scale_features": true,
+            "scale_labels": true,
+            "n_iter" : 10
+        },
+    "data":
+        {
+            "train_window": 10,
+            "features": ["x:perf_mean", "y:perf_mean", "z:perf_mean", "perforation:length"]
+        }
+}

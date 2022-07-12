@@ -13,6 +13,7 @@ com/beyond/helpers/ReadWriteHelper.class
 com/beyond/utils/Month.class
 com/beyond/helpers/EmailHelper$2.class
 com/beyond/pagesORCmds/WebPages/AdvisorActions.class
+com/beyond/pagesORCmds/WebPages/Data_cmd.class
 com/beyond/model/programModel.class
 com/beyond/reporting/StateHelper.class
 com/beyond/pagesORCmds/commands/StepDef.class

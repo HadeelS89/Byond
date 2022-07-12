@@ -24,7 +24,7 @@ public class ExtentManager extends Base {
 
 
     public static String reportFileNameNew =String.format("%s/%s/%s.html",
-            projectName,jenkins_build,dockerImageNumber);
+            projectName,dockerImageNumber,jenkins_build);
 
     public static String reportImageName = String.format("Beyond-Automation_Img-%s-%s",
             ActionsHelper.getTodayDate(),System.currentTimeMillis());
@@ -35,7 +35,7 @@ public class ExtentManager extends Base {
 
 
     public static String reportFileName = String.format("%s-%s-%s-%s.html",//%s_%s_%sReport-%s-%s.html"
-            projectName,jenkins_build,dockerImageNumber,ActionsHelper.getTodayDate());
+            ActionsHelper.projectName(),jenkins_build,dockerImageNumber,ActionsHelper.getTodayDate());
     public static ExtentReports createInstance() throws GeneralSecurityException, MessagingException {
         StateHelper.setStepState("reportName",
                 reportFileName);
@@ -45,6 +45,8 @@ public class ExtentManager extends Base {
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setTheme( Theme.STANDARD);
         htmlReporter.config().setEncoding("utf-8");
+        htmlReporter.config().getReportName();
+
 
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
@@ -56,7 +58,8 @@ public class ExtentManager extends Base {
     // run maven inside docker
 
     public static void main(String[] args) throws GeneralSecurityException, MessagingException {
-        System.out.println(projectName);
+        String project_name = "egistry.infill.beyond.ai/infill-advisor-ds";
+        System.out.println(project_name.substring( project_name.lastIndexOf("/") + 1));
     }
 
 }

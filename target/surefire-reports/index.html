@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Student_Test_Suite" class="navigator-link ">
-                    <span>commandInfelTest.xml</span>
+                    <span>command_regression.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">2 methods,   2 passed</span>
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -104,12 +104,27 @@
                     <div class="method-list-content passed suite-Student_Test_Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.TC01_EdgeCase_RidgeModel" class="method navigator-link" hash-for-method="getImage(CmdTest0)">getImage(CmdTest0)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.Infill_HappyCase" class="method navigator-link" hash-for-method="copyFile(studyFolderName)">copyFile(studyFolderName)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.TC01_EdgeCase_RidgeModel" class="method navigator-link" hash-for-method="getLatestImage(getLatest_Image)">getLatestImage(getLatest_Image)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.Infill_HappyCase" class="method navigator-link" hash-for-method="deleteFile(studyFolderName)">deleteFile(studyFolderName)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.Infill_HappyCase" class="method navigator-link" hash-for-method="getLatestImage(getLatest_Image)">getLatestImage(getLatest_Image)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.Infill_HappyCase" class="method navigator-link" hash-for-method="initialise_Study(infill_InitializeStudy)">initialise_Study(infill_InitializeStudy)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Student_Test_Suite" title="Beyon.Command.Cases.Infill_HappyCase" class="method navigator-link" hash-for-method="verifyStudyFolder(studyFolderName)">verifyStudyFolder(studyFolderName)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Student_Test_Suite -->
@@ -127,17 +142,27 @@
           <div class="suite-Student_Test_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Beyon.Command.Cases.TC01_EdgeCase_RidgeModel</span>
+              <span class="class-name">Beyon.Command.Cases.Infill_HappyCase</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="getImage(CmdTest0)">
-                  </a> <!-- getImage(CmdTest0) -->
-                  <span class="method-name">getImage</span>
-                  <span class="parameters">(CmdTest0)</span>
+                  <a name="copyFile(studyFolderName)">
+                  </a> <!-- copyFile(studyFolderName) -->
+                  <span class="method-name">copyFile</span>
+                  <span class="parameters">(studyFolderName)</span>
                   <em>
-(get latest image test  )                  </em>
+(Copy dataset from NAS drive )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="deleteFile(studyFolderName)">
+                  </a> <!-- deleteFile(studyFolderName) -->
+                  <span class="method-name">deleteFile</span>
+                  <span class="parameters">(studyFolderName)</span>
+                  <em>
+(Delete The created study folder )                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
@@ -147,7 +172,27 @@
                   <span class="method-name">getLatestImage</span>
                   <span class="parameters">(getLatest_Image)</span>
                   <em>
-(get latest image test  )                  </em>
+(get latest image from docker file  )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="initialise_Study(infill_InitializeStudy)">
+                  </a> <!-- initialise_Study(infill_InitializeStudy) -->
+                  <span class="method-name">initialise_Study</span>
+                  <span class="parameters">(infill_InitializeStudy)</span>
+                  <em>
+(Execute initialize study command  )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyStudyFolder(studyFolderName)">
+                  </a> <!-- verifyStudyFolder(studyFolderName) -->
+                  <span class="method-name">verifyStudyFolder</span>
+                  <span class="parameters">(studyFolderName)</span>
+                  <em>
+(Verify the study folder is created )                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -155,7 +200,7 @@
         </div> <!-- panel Student_Test_Suite -->
         <div panel-name="test-xml-Student_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/hsalameh/Desktop/myFrameWork/Byond/src/main/resources/xmlTests/Beyond/commandInfelTest.xml</span>
+            <span class="header-content">/Users/hsalameh/Desktop/myFrameWork/Byond/src/main/resources/xmlTests/Beyond/command_regression.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -165,13 +210,14 @@
   &lt;listeners&gt;
     &lt;listener class-name=&quot;com.beyond.reporting.Listeners&quot;/&gt;
   &lt;/listeners&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;Admit New Student With EID - Send For Approval&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;get latest image and open study &quot; verbose=&quot;0&quot;&gt;
+    &lt;parameter name=&quot;studyFolderName&quot; value=&quot;studyFolderName&quot;/&gt;
+    &lt;parameter name=&quot;infill_InitializeStudy&quot; value=&quot;infill_InitializeStudy&quot;/&gt;
     &lt;parameter name=&quot;getLatest_Image&quot; value=&quot;getLatest_Image&quot;/&gt;
-    &lt;parameter name=&quot;CmdTest0&quot; value=&quot;CmdTest0&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Beyon.Command.Cases.TC01_EdgeCase_RidgeModel&quot;/&gt;
+      &lt;class name=&quot;Beyon.Command.Cases.Infill_HappyCase&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- Admit New Student With EID - Send For Approval --&gt;
+  &lt;/test&gt; &lt;!-- get latest image and open study  --&gt;
 &lt;/suite&gt; &lt;!-- Student Test Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -183,7 +229,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Admit New Student With EID - Send For Approval (1 class)</span>
+                <span class="test-name">get latest image and open study  (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -209,20 +255,32 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(2);
+data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'getImage')
-data.setCell(0, 2, 'Beyon.Command.Cases.TC01_EdgeCase_RidgeModel')
-data.setCell(0, 3, 3492);
+data.setCell(0, 1, 'initialise_Study')
+data.setCell(0, 2, 'Beyon.Command.Cases.Infill_HappyCase')
+data.setCell(0, 3, 22439);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'getLatestImage')
-data.setCell(1, 2, 'Beyon.Command.Cases.TC01_EdgeCase_RidgeModel')
-data.setCell(1, 3, 3013);
+data.setCell(1, 1, 'deleteFile')
+data.setCell(1, 2, 'Beyon.Command.Cases.Infill_HappyCase')
+data.setCell(1, 3, 5031);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyStudyFolder')
+data.setCell(2, 2, 'Beyon.Command.Cases.Infill_HappyCase')
+data.setCell(2, 3, 3024);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'getLatestImage')
+data.setCell(3, 2, 'Beyon.Command.Cases.Infill_HappyCase')
+data.setCell(3, 3, 2776);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'copyFile')
+data.setCell(4, 2, 'Beyon.Command.Cases.Infill_HappyCase')
+data.setCell(4, 3, 28);
 window.suiteTableData['Student_Test_Suite']= { tableData: data, tableDiv: 'times-div-Student_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 seconds</span>
+              <span class="suite-total-time">Total running time: 33 seconds</span>
               <div id="times-div-Student_Test_Suite">
               </div> <!-- times-div-Student_Test_Suite -->
             </div> <!-- times-div -->
@@ -248,14 +306,26 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Beyon.Command.Cases.TC01_EdgeCase_RidgeModel</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Beyon.Command.Cases.Infill_HappyCase</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">getImage(CmdTest0)</span>
+                <span class="method-name">getLatestImage(getLatest_Image)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">getLatestImage(getLatest_Image)</span>
-                <span class="method-start">3505 ms</span>
+                <span class="method-name">initialise_Study(infill_InitializeStudy)</span>
+                <span class="method-start">2794 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyStudyFolder(studyFolderName)</span>
+                <span class="method-start">25236 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">copyFile(studyFolderName)</span>
+                <span class="method-start">28263 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">deleteFile(studyFolderName)</span>
+                <span class="method-start">28292 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

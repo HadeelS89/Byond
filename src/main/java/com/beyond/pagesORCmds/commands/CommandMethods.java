@@ -1,5 +1,6 @@
 package com.beyond.pagesORCmds.commands;
 
+import com.beyond.helpers.ActionsHelper;
 import com.beyond.helpers.ReadWriteHelper;
 import org.apache.commons.io.FileUtils;
 
@@ -11,31 +12,28 @@ import java.nio.file.Paths;
 
 
 import org.testng.Assert;
+
 //common staps
 public class CommandMethods {
     public static String dirPath = System.getProperty("user.dir");
     static int exitCode;
-    public static void RunContainerAndEx(String prop1 , String prop2 , String prop3 , String prop4) throws IOException, InterruptedException
-    {
+    public static File file;
 
+    public static void RunContainerAndEx(String dockerPath, String projectPath, String latestImage, String command) throws IOException, InterruptedException {
 
-        String dockerDirPath = ReadWriteHelper.readCommand(prop1);
-        String projectDir = ReadWriteHelper.readCommand(prop2).replace("${dirPath}", dirPath);
-
-        System.out.println(projectDir);
-
-
-        String buildNumberPath = ReadWriteHelper.readCommand(prop3);
-        String infillCommand= ReadWriteHelper.readCommand(prop4);
 
         ProcessBuilder processBuilder = new ProcessBuilder();
 
-        processBuilder.command(dockerDirPath, "run" , "--rm", "-v", projectDir, "-v", "/Volumes:/Volumes", "-p", "8501:8501", "--name=container", buildNumberPath, infillCommand)
+        processBuilder.command(dockerPath, "run", "--rm", "-v", projectPath, "-v", "/Volumes:/Volumes", "-p",
+                        "8501:8501", "--name=container", latestImage, command)
                 .inheritIO();
 
-        File file;
+        System.out.println("command =" + dockerPath + " run " + "--rm -v " + projectPath + " -v " + "/Volumes:/Volumes" + " -p" +
+                "8501:8501" + " --name=container " + latestImage + command);
 
-        file = new File(dirPath + "/resources/actualResult.txt");
+
+        file = new File(System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/ActualResults.txt");
 
         processBuilder.redirectErrorStream(true);
 
@@ -55,52 +53,54 @@ public class CommandMethods {
         }
 
         exitCode = process.waitFor();
-
+// check if file downloaded
+        ActionsHelper.isFileDownloaded("ActualResults.txt", "false");
     }
 
 
     public static String containerID;
-        public static void runDockerCommand1(String Command) throws IOException, InterruptedException {
-            // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
 
-            ProcessBuilder processBuilder = new ProcessBuilder(Command.split("\\s+")).inheritIO();
+    public static void runDockerCommand1(String Command) throws IOException, InterruptedException {
+        // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
 
-
-            Process process = processBuilder.start();
+        ProcessBuilder processBuilder = new ProcessBuilder(Command.split("\\s+")).inheritIO();
 
 
-            process.waitFor();
+        Process process = processBuilder.start();
 
 
-            try {
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                System.out.println("Reader line " + reader.readLine());
+        process.waitFor();
 
 
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println("line h= " + line);
-                }
+        try {
 
-                int exitCode = process.waitFor();
-                System.out.println("\nExited with error code : " + exitCode);
-
-                int expectedExistCode = 0;
-                int actualExistCode = exitCode;
-                //Assert.assertEquals(expectedExistCode, actualExistCode);
-
-            } catch (Exception e) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            System.out.println("Reader line " + reader.readLine());
 
 
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println("line h= " + line);
             }
+
+            int exitCode = process.waitFor();
+            System.out.println("\nExited with error code : " + exitCode);
+
+            int expectedExistCode = 0;
+            int actualExistCode = exitCode;
+            //Assert.assertEquals(expectedExistCode, actualExistCode);
+
+        } catch (Exception e) {
+
 
         }
 
+    }
+
     public static void runDockerCommandWithoutSplit(String Command) throws IOException, InterruptedException {
         // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
-ProcessBuilder processBuilder =new ProcessBuilder();
-        processBuilder.command("/usr/local/bin/docker images ",Command).inheritIO();
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        processBuilder.command("/usr/local/bin/docker images ", Command).inheritIO();
 
 
         Process process = processBuilder.start();
@@ -111,114 +111,102 @@ ProcessBuilder processBuilder =new ProcessBuilder();
 
     }
 
- public static void main(String[] args) throws IOException, InterruptedException {
-    runDockerCommandWithoutSplit(" awk '{print $1}'  awk 'NR==2'");
-}
-//get all the images
-    public  void runDocker_firstCommand(String command) throws IOException, InterruptedException {
-                // String dockerDirPath = ReadWriteHelper.readCommand("macDockerDirPath");
+    public static void main(String[] args) throws IOException, InterruptedException {
+        runDockerCommandWithoutSplit(" awk '{print $1}'  awk 'NR==2'");
+    }
+
+    //get all the images
+    public void runDocker_Command(String command) throws IOException, InterruptedException {
+
 
 //clear the file before run
-                ReadWriteHelper.clearTheFile(System.getProperty("user.dir") +
-                        "/src/main/resources/DataProvider/ActualResults.txt");
-             /////
-
-
-
+        ReadWriteHelper.clearTheFile(System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/ActualResults.txt");
 
 
         ProcessBuilder processBuilder = new ProcessBuilder(command.split("\\s+")).inheritIO();
 
-       // ProcessBuilder processBuilder = new ProcessBuilder();
 
-      //  processBuilder.command(command ," ",projectName,":",dockerImageNumber).inheritIO();
-     //    processBuilder = new ProcessBuilder(command).inheritIO();
-      //  processBuilder.command(command ," ","ubuntu",":","latest").inheritIO();
+        // print console on text file
+        File file = new File(System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/ActualResults.txt");
 
+        processBuilder.redirectErrorStream(true);
 
+        processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file));
+        // processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file))
+        Process process = processBuilder.start();
 
-               File file = new File(System.getProperty("user.dir") +
-                       "/src/main/resources/DataProvider/ActualResults.txt");
+        process.waitFor();
 
-                processBuilder.redirectErrorStream(true);
-
-                processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file));
-               // processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file))
-                Process process = processBuilder.start();
-
-                process.waitFor();
-
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
 
-                String line;
+        String line;
 
-                while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
 
-                }
-
+        }
+//String results = reader.readLine();
+//        System.out.println("output =" + results);
 
 
 //                String contents = new String(Files.readAllBytes(Paths.get(System.getProperty("user.dir") +
 //                        "/src/main/resources/DataProvider/ActualResults.txt")));
-               // System.out.println("hadeel test "+contents);
-                exitCode = process.waitFor();
+        // System.out.println("hadeel test "+contents);
+        exitCode = process.waitFor();
 
 
-            }
+    }
 
 
-        public static void getContainerID(String Command) throws IOException, InterruptedException
-        {
+    public static void getContainerID(String Command) throws IOException, InterruptedException {
 
 
-            ProcessBuilder pb = new ProcessBuilder(Command.split("\\s+"));
+        ProcessBuilder pb = new ProcessBuilder(Command.split("\\s+"));
 
-            Process p = pb.start();
+        Process p = pb.start();
 
-            BufferedReader output = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        BufferedReader output = new BufferedReader(new InputStreamReader(p.getInputStream()));
 
-            containerID = output.readLine();
+        containerID = output.readLine();
 
-            System.out.println("Container id ="+ containerID);
+        System.out.println("Container id =" + containerID);
 
 
+    }
 
+    public static void RunCommandsInsidContainer(String command) throws IOException, InterruptedException {
+
+        // String Command = ReadWriteHelper.ReadData(string);
+
+
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
+        processBuilder.command("/usr/local/bin/docker", "exec",
+                "-i", containerID, "infill", command).inheritIO();
+
+        Process process = processBuilder.start();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+        // process.waitFor();
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
 
-        public static void RunCommandsInsidContainer(String command) throws IOException, InterruptedException
-        {
+        int exitCode = process.waitFor();
+        System.out.println("\nExited with error code : " + exitCode);
 
-           // String Command = ReadWriteHelper.ReadData(string);
+        int expectedExistCode = 0;
+        int actualExistCode = exitCode;
+        Assert.assertEquals(expectedExistCode, actualExistCode);
 
+    }
 
-            ProcessBuilder processBuilder = new ProcessBuilder();
-
-            processBuilder.command("/usr/local/bin/docker", "exec" ,
-                    "-i", containerID, "infill", command).inheritIO();
-
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-            // process.waitFor();
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-            int expectedExistCode= 0;
-            int actualExistCode = exitCode;
-            Assert.assertEquals(expectedExistCode, actualExistCode);
-
-        }
-
-    public static void runCmd(String command) throws IOException, InterruptedException
-    {
+    public static void runCmd(String command) throws IOException, InterruptedException {
 
         // String Command = ReadWriteHelper.ReadData(string);
 
@@ -240,212 +228,191 @@ ProcessBuilder processBuilder =new ProcessBuilder();
         int exitCode = process.waitFor();
         System.out.println("\nExited with error code : " + exitCode);
 
-        int expectedExistCode= 0;
+        int expectedExistCode = 0;
         int actualExistCode = exitCode;
-      //  Assert.assertEquals(expectedExistCode, actualExistCode);
+        //  Assert.assertEquals(expectedExistCode, actualExistCode);
 
     }
 
-        public static void checkExistOfStudy() throws InterruptedException
-        {
+    public static void checkExistOfStudy() throws InterruptedException {
 
-            Thread.sleep(3000);
-            File file = new File("StudyFolder/Study3");
-            System.err.println("File Folder Exist" + " " + isFileDirectoryExists(file));
-            System.err.println("Directory Exists" + " " + isDirectoryExists("StudyFolder/Study3/data"));
+        Thread.sleep(3000);
+        File file = new File("StudyFolder/Study3");
+        System.err.println("File Folder Exist" + " " + isFileDirectoryExists(file));
+        System.err.println("Directory Exists" + " " + isDirectoryExists("StudyFolder/Study3/data"));
 
-        }
+    }
 
-        public static boolean isFileDirectoryExists(File file)
+    public static boolean isFileDirectoryExists(File file) {
+        if (file.exists()) {
 
-        {
-            if (file.exists())
-
-            {
-
-                return true;
-
-
-            }
-            return false;
-        }
-
-        public static boolean isDirectoryExists(String directoryPath)
-
-        {
-            if (!Paths.get(directoryPath).toFile().isDirectory())
-            {
-                System.err.print("\nFile Folder Not Exist");
-
-                return false;
-            }
             return true;
 
 
         }
+        return false;
+    }
 
-        public static void copyFiles()//file need to passed as param
-        {
+    public static boolean isDirectoryExists(String directoryPath) {
+        if (!Paths.get(directoryPath).toFile().isDirectory()) {
+            System.err.print("\nFile Folder Not Exist");
 
-            File source = new File("StudyFolder/Study");// check the file
-            File dest = new File("StudyFolder/Study3");
-            try {
-                FileUtils.copyDirectory(source, dest);
-                System.err.print("\nStudy data has been copied");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            return false;
+        }
+        return true;
 
+
+    }
+
+    public static void copyFiles(String sourceFile, String destinationFile)//file need to passed as param
+    {
+
+        File source = new File("src/main/resources/DataProvider/" + sourceFile);// check the file
+        File dest = new File("src/main/resources/DataProvider/" + destinationFile);//study3
+        try {
+            FileUtils.copyDirectory(source, dest);
+            System.err.print("\nStudy data has been copied");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        public static void deleteTheStudy() throws IOException
-        {
+    }
 
-            FileUtils.forceDelete(new File("StudyFolder/Study3"));
+    public static void deleteTheStudy() throws IOException {
 
+        FileUtils.forceDelete(new File("StudyFolder/Study3"));
+
+    }
+
+    public static void RunCommandsInsidContainerUsingLabels(String runCMD_Label) throws IOException, InterruptedException {
+
+
+        // String Command = ReadWriteHelper.readCommand(runCMD_Label);
+
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
+        processBuilder.command("/usr/local/bin/docker", "exec", "-i", containerID,
+                "infill", runCMD_Label, "--labels", "oil:cumulative,gas:cumulative",
+                "--cv-splits", "10", "--n-periods", "12",
+                "--interpolate-labels").inheritIO();
+
+        Process process = processBuilder.start();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+        // process.waitFor();
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
 
-        public  static void RunCommandsInsidContainerUsingLabels(String runCMD_Label) throws IOException, InterruptedException
-        {
+        int exitCode = process.waitFor();
+        System.out.println("\nExited with error code : " + exitCode);
+
+        int expectedExistCode = 0;
+        int actualExistCode = exitCode;
+        Assert.assertEquals(expectedExistCode, actualExistCode);
+
+    }
+
+    public static void runTrainModel(String command, String model, String template) throws IOException, InterruptedException {
 
 
-           // String Command = ReadWriteHelper.readCommand(runCMD_Label);
+        String Command = ReadWriteHelper.readCommand(command);
+        String Model = ReadWriteHelper.readCommand(model);
+        String Template = ReadWriteHelper.readCommand(template);
 
-            ProcessBuilder processBuilder = new ProcessBuilder();
+        ProcessBuilder processBuilder = new ProcessBuilder();
 
-            processBuilder.command("/usr/local/bin/docker", "exec" , "-i", containerID,
-                    "infill", runCMD_Label, "--labels", "oil:cumulative,gas:cumulative",
-                    "--cv-splits", "10", "--n-periods", "12",
-                    "--interpolate-labels").inheritIO();
+        processBuilder.command("/usr/local/bin/docker", "exec", "-i", containerID, "infill", Command, Model, "--template", Template).inheritIO();
 
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        Process process = processBuilder.start();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-            // process.waitFor();
+        // process.waitFor();
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-            int expectedExistCode= 0;
-            int actualExistCode = exitCode;
-            Assert.assertEquals(expectedExistCode, actualExistCode);
-
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
 
-        public static void runTrainModel(String command ,String model ,String template) throws IOException, InterruptedException
-        {
+        int exitCode = process.waitFor();
+        System.out.println("\nExited with error code : " + exitCode);
+
+        int expectedExistCode = 0;
+        int actualExistCode = exitCode;
+        Assert.assertEquals(expectedExistCode, actualExistCode);
+
+    }
+
+    public static void runPredictPlan(String command, String plan, String model) throws IOException, InterruptedException {
 
 
-            String Command = ReadWriteHelper.readCommand(command);
-            String Model = ReadWriteHelper.readCommand(model);
-            String Template = ReadWriteHelper.readCommand(template);
+        String Command = ReadWriteHelper.readCommand(command);
+        String Plan = ReadWriteHelper.readCommand(plan);
+        String Model = ReadWriteHelper.readCommand(model);
 
-            ProcessBuilder processBuilder = new ProcessBuilder();
+        ProcessBuilder processBuilder = new ProcessBuilder();
 
-            processBuilder.command("/usr/local/bin/docker", "exec" , "-i", containerID, "infill", Command, Model, "--template", Template).inheritIO();
+        processBuilder.command("/usr/local/bin/docker", "exec", "-i", containerID,
+                "infill", Command, Plan, "--model", Model).inheritIO();
 
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        Process process = processBuilder.start();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-            // process.waitFor();
+        // process.waitFor();
 
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-            int expectedExistCode= 0;
-            int actualExistCode = exitCode;
-            Assert.assertEquals(expectedExistCode, actualExistCode);
-
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
         }
 
-        public static void runPredictPlan(String command ,String plan ,String model) throws IOException, InterruptedException
-        {
+        int exitCode = process.waitFor();
+        System.out.println("\nExited with error code : " + exitCode);
+
+        int expectedExistCode = 0;
+        int actualExistCode = exitCode;
+        Assert.assertEquals(expectedExistCode, actualExistCode);
+
+    }
 
 
-            String Command = ReadWriteHelper.readCommand(command);
-            String Plan = ReadWriteHelper.readCommand(plan);
-            String Model = ReadWriteHelper.readCommand(model);
+    public static void copyFileContent(String path1, String path2) throws IOException {
 
-            ProcessBuilder processBuilder = new ProcessBuilder();
 
-            processBuilder.command("/usr/local/bin/docker", "exec" , "-i", containerID,
-                    "infill", Command, Plan, "--model", Model).inheritIO();
+        String file1 = ReadWriteHelper.readCommand(path1);
+        String file2 = ReadWriteHelper.readCommand(path2);
 
-            Process process = processBuilder.start();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-            // process.waitFor();
-
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
-            int exitCode = process.waitFor();
-            System.out.println("\nExited with error code : " + exitCode);
-
-            int expectedExistCode= 0;
-            int actualExistCode = exitCode;
-            Assert.assertEquals(expectedExistCode, actualExistCode);
-
+        File source = new File(file1);
+        File dest = new File(file2);
+        try {
+            FileUtils.copyFile(source, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
-        public static void copyFileContent(String path1 , String path2) throws IOException
-        {
+    }
 
-
-
-            String file1 = ReadWriteHelper.readCommand(path1);
-            String file2 = ReadWriteHelper.readCommand(path2);
-
-
-            File source = new File(file1);
-            File dest = new File(file2);
-            try {
-                FileUtils.copyFile(source, dest);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
-
-
-        }
     // this command must have general data and the file should store inside the project not on user directory
     //  should pass it as param also
-        public static void exCommand() throws IOException, InterruptedException
-        {
+    public static void exCommand() throws IOException, InterruptedException {
 
-            String command = "/usr/local/bin/docker run --entrypoint \"\" " +
-                    "-d -v /Users/musab_daja/Documents/Study3:/study -v /Volumes:/Volumes -p 8501:8501 " +
-                    " --name=container registry.infill.beyond.ai/infill-advisor-ds:721 sleep infinity";
+        String command = "/usr/local/bin/docker run --entrypoint \"\" " +
+                "-d -v /Users/musab_daja/Documents/Study3:/study -v /Volumes:/Volumes -p 8501:8501 " +
+                " --name=container registry.infill.beyond.ai/infill-advisor-ds:721 sleep infinity";
 
-            ProcessBuilder processBuilder = new ProcessBuilder(command.split("\\s+"));
+        ProcessBuilder processBuilder = new ProcessBuilder(command.split("\\s+"));
 
-            Process process = processBuilder.start();
+        Process process = processBuilder.start();
 
-            process.waitFor();
-
+        process.waitFor();
 
 
-            // ProcessBuilder proc = new ProcessBuilder(command.split("\\s+")).inheritIO();
+        // ProcessBuilder proc = new ProcessBuilder(command.split("\\s+")).inheritIO();
 
-        }
-
-
-
-
+    }
 
 
 }

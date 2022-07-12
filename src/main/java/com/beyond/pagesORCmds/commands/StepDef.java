@@ -22,7 +22,7 @@ public class StepDef {
 		//String dockerDirPath = configFileReader.properties.getProperty(prop1);
 		//String loginCommand = ReadWriteHelper.readCommand("loginToDockerCommand");
 		
-	//	CommandMethods.runDocker_firstCommand(loginCommand);
+	//	CommandMethods.runDocker_Command(loginCommand);
 		
 	}
 
@@ -115,7 +115,7 @@ public class StepDef {
 		  {
 
 
-			  CommandMethods.copyFiles();
+			//  CommandMethods.copyFiles();
 			  Thread.sleep(1500);
 
 	     }
@@ -138,7 +138,7 @@ public class StepDef {
 
 				String deleteCommand = ReadWriteHelper.readCommand("deleteContainer");
 
-				//CommandHelpers.runDocker_firstCommand(deleteCommand);
+				//CommandHelpers.runDocker_Command(deleteCommand);
 
 			}
 
@@ -152,7 +152,7 @@ public class StepDef {
 
 				String startCommand = ReadWriteHelper.readCommand("rerunContainer");
 
-			//	CommandHelpers.runDocker_firstCommand(startCommand);
+			//	CommandHelpers.runDocker_Command(startCommand);
 
 			}
 

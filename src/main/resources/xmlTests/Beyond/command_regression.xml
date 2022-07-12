@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Student Test Suite">
+
+    <listeners>
+        <listener class-name="com.beyond.reporting.Listeners"/>
+
+    </listeners>
+
+
+    <test name="get latest image and open study " preserve-order="true">
+<parameter name="getLatest_Image" value="getLatest_Image"></parameter>
+        <parameter name="infill_InitializeStudy" value="infill_InitializeStudy"></parameter>
+        <parameter name="studyFolderName" value="studyFolderName"></parameter>
+        <classes>
+            <class name ="Beyon.Command.Cases.Infill_HappyCase"></class>
+        </classes>
+
+    </test>
+</suite>
+
