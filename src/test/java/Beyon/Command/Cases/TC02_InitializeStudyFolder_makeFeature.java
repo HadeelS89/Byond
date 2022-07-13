@@ -16,7 +16,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 
-@Listeners
+@Listeners()
+
 public class TC02_InitializeStudyFolder_makeFeature {
 
     String dockerImageNumber = System.getProperty("image_name");//TAG//this need to be added
@@ -35,7 +36,7 @@ public class TC02_InitializeStudyFolder_makeFeature {
 
      */
    // @Parameters({"getLatest_Image"})
-    @Test(description = "get latest image from docker file  ", priority = 0)
+    @Test(groups = {"smoke"},description = "get latest image from docker file  ", priority = 0)
     public void getLatestImage() throws Exception {
 
         commandMethods = new CommandMethods();
@@ -50,7 +51,7 @@ public class TC02_InitializeStudyFolder_makeFeature {
 
 
 
-    @Test(description = "Execute initialize study command  ", priority = 1)
+    @Test(groups = {"smoke"},description = "Execute initialize study command  ", priority = 1)
     public void initialise_Study() throws Exception {
 
         commandMethods = new CommandMethods();

@@ -1,17 +1,8 @@
 package com.beyond.reporting;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.beyond.common.Base;
-import com.beyond.helpers.ActionsHelper;
-import com.beyond.helpers.EmailHelper;
-import com.beyond.helpers.ReadWriteHelper;
 import com.beyond.helpers.ScreenshotHelper;
 import lombok.SneakyThrows;
 import org.apache.commons.io.FileUtils;
@@ -20,8 +11,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 
 import javax.mail.MessagingException;
 import java.io.File;
@@ -62,6 +51,7 @@ public class Listeners extends TestListenerAdapter {
 
             System.out.println("Test Suite started!");
         }
+
        // extent.add("Executing " + context.getCurrentXmlTest().getName());
     }
 
@@ -73,6 +63,7 @@ public class Listeners extends TestListenerAdapter {
             System.out.println(("Test Suite is ending!"));
 
         }
+
         extent.flush();
 
 
@@ -128,10 +119,12 @@ public class Listeners extends TestListenerAdapter {
             System.out.println((result.getMethod().getMethodName() + " started!"));
 
         }
+
         ExtentTest extentTest = extent.createTest(result.getMethod().getDescription(),
-                result.getMethod().getMethodName());
+                result.getMethod().getMethodName()).assignCategory(result.getMethod().getGroups());
 
         test.set(extentTest);
+
 
     }
 

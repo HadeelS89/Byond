@@ -1,47 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+<testng-results ignored="4" total="6" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-13T18:39:02 EEST" name="Student Test Suite" finished-at="2022-07-13T18:53:04 EEST" duration-ms="842388">
+  <suite started-at="2022-07-14T00:26:50 EEST" name="Student Test Suite" finished-at="2022-07-14T00:27:15 EEST" duration-ms="24819">
     <groups>
+      <group name="smoke">
+        <method signature="TC02_InitializeStudyFolder_makeFeature.getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature@bc57b40]" name="getLatestImage" class="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"/>
+        <method signature="TC02_InitializeStudyFolder_makeFeature.initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature@bc57b40]" name="initialise_Study" class="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2022-07-13T18:39:02 EEST" name="TC02_InitializeStudyFolder_makeFeature " finished-at="2022-07-13T18:39:02 EEST" duration-ms="9">
-    </test> <!-- TC02_InitializeStudyFolder_makeFeature  -->
-    <test started-at="2022-07-13T18:39:02 EEST" name="TC03_InitializeStudyFolder_CreateStudy " finished-at="2022-07-13T18:53:04 EEST" duration-ms="842358">
-      <class name="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy">
-        <test-method signature="getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:02 EEST" name="getLatestImage" description="get latest image from docker file  " finished-at="2022-07-13T18:39:04 EEST" duration-ms="2487" status="PASS">
+    <test started-at="2022-07-14T00:26:50 EEST" name="TC02_InitializeStudyFolder_makeFeature " finished-at="2022-07-14T00:27:15 EEST" duration-ms="24819">
+      <class name="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature">
+        <test-method signature="getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature@bc57b40]" started-at="2022-07-14T00:26:50 EEST" name="getLatestImage" description="get latest image from docker file  " finished-at="2022-07-14T00:26:53 EEST" duration-ms="2705" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLatestImage -->
-        <test-method signature="initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:04 EEST" name="initialise_Study" description="Execute initialize study command  " finished-at="2022-07-13T18:39:26 EEST" duration-ms="21771" status="PASS">
+        <test-method signature="initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature@bc57b40]" started-at="2022-07-14T00:26:53 EEST" name="initialise_Study" description="Execute initialize study command  " finished-at="2022-07-14T00:27:15 EEST" duration-ms="22054" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialise_Study -->
-        <test-method signature="verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:26 EEST" name="verifyStudyFolder" description="Verify the study folder is created " finished-at="2022-07-13T18:39:29 EEST" duration-ms="3024" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStudyFolder -->
-        <test-method signature="copyFile()[pri:3, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:29 EEST" name="copyFile" description="Copy dataset from NAS drive " finished-at="2022-07-13T18:39:31 EEST" duration-ms="1590" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- copyFile -->
-        <test-method signature="execute_MakeFeature()[pri:4, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:31 EEST" name="execute_MakeFeature" description="Execute make a feature command  " finished-at="2022-07-13T18:52:38 EEST" duration-ms="786838" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- execute_MakeFeature -->
-        <test-method signature="execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:52:38 EEST" name="execute_CreateStudy" description="Execute create study command  " finished-at="2022-07-13T18:52:59 EEST" duration-ms="21497" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- execute_CreateStudy -->
-        <test-method signature="deleteFile()[pri:6, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:52:59 EEST" name="deleteFile" description="Delete The created study folder " finished-at="2022-07-13T18:53:04 EEST" duration-ms="5079" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- deleteFile -->
-        <test-method is-config="true" signature="stopDriver_push_Report_toS3()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:53:05 EEST" name="stopDriver_push_Report_toS3" finished-at="2022-07-13T18:53:20 EEST" duration-ms="15068" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- stopDriver_push_Report_toS3 -->
-      </class> <!-- Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy -->
-    </test> <!-- TC03_InitializeStudyFolder_CreateStudy  -->
+      </class> <!-- Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature -->
+    </test> <!-- TC02_InitializeStudyFolder_makeFeature  -->
   </suite> <!-- Student Test Suite -->
 </testng-results>

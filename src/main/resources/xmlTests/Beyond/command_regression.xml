@@ -13,7 +13,7 @@
     <test name="TC02_InitializeStudyFolder_makeFeature " preserve-order="true">
 
         <classes>
-            <!--    <class name ="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"></class>-->
+               <class name ="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"></class>
              </classes>
 
 
