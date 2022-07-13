@@ -1,68 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-12T03:57:17 EEST" name="Student Test Suite" finished-at="2022-07-12T03:57:51 EEST" duration-ms="33362">
+  <suite started-at="2022-07-13T18:39:02 EEST" name="Student Test Suite" finished-at="2022-07-13T18:53:04 EEST" duration-ms="842388">
     <groups>
     </groups>
-    <test started-at="2022-07-12T03:57:17 EEST" name="get latest image and open study " finished-at="2022-07-12T03:57:51 EEST" duration-ms="33362">
-      <class name="Beyon.Command.Cases.Infill_HappyCase">
-        <test-method signature="getLatestImage(java.lang.String)[pri:0, instance:Beyon.Command.Cases.Infill_HappyCase@71f67a79]" started-at="2022-07-12T03:57:17 EEST" name="getLatestImage" description="get latest image from docker file  " finished-at="2022-07-12T03:57:20 EEST" duration-ms="2776" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[getLatest_Image]]>
-              </value>
-            </param>
-          </params>
+    <test started-at="2022-07-13T18:39:02 EEST" name="TC02_InitializeStudyFolder_makeFeature " finished-at="2022-07-13T18:39:02 EEST" duration-ms="9">
+    </test> <!-- TC02_InitializeStudyFolder_makeFeature  -->
+    <test started-at="2022-07-13T18:39:02 EEST" name="TC03_InitializeStudyFolder_CreateStudy " finished-at="2022-07-13T18:53:04 EEST" duration-ms="842358">
+      <class name="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy">
+        <test-method signature="getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:02 EEST" name="getLatestImage" description="get latest image from docker file  " finished-at="2022-07-13T18:39:04 EEST" duration-ms="2487" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLatestImage -->
-        <test-method signature="initialise_Study(java.lang.String)[pri:1, instance:Beyon.Command.Cases.Infill_HappyCase@71f67a79]" started-at="2022-07-12T03:57:20 EEST" name="initialise_Study" description="Execute initialize study command  " finished-at="2022-07-12T03:57:43 EEST" duration-ms="22439" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[infill_InitializeStudy]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:04 EEST" name="initialise_Study" description="Execute initialize study command  " finished-at="2022-07-13T18:39:26 EEST" duration-ms="21771" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initialise_Study -->
-        <test-method signature="verifyStudyFolder(java.lang.String)[pri:2, instance:Beyon.Command.Cases.Infill_HappyCase@71f67a79]" started-at="2022-07-12T03:57:43 EEST" name="verifyStudyFolder" description="Verify the study folder is created " finished-at="2022-07-12T03:57:46 EEST" duration-ms="3024" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[studyFolderName]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:26 EEST" name="verifyStudyFolder" description="Verify the study folder is created " finished-at="2022-07-13T18:39:29 EEST" duration-ms="3024" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyStudyFolder -->
-        <test-method signature="copyFile(java.lang.String)[pri:3, instance:Beyon.Command.Cases.Infill_HappyCase@71f67a79]" started-at="2022-07-12T03:57:46 EEST" name="copyFile" description="Copy dataset from NAS drive " finished-at="2022-07-12T03:57:46 EEST" duration-ms="28" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[studyFolderName]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="copyFile()[pri:3, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:29 EEST" name="copyFile" description="Copy dataset from NAS drive " finished-at="2022-07-13T18:39:31 EEST" duration-ms="1590" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- copyFile -->
-        <test-method signature="deleteFile(java.lang.String)[pri:4, instance:Beyon.Command.Cases.Infill_HappyCase@71f67a79]" started-at="2022-07-12T03:57:46 EEST" name="deleteFile" description="Delete The created study folder " finished-at="2022-07-12T03:57:51 EEST" duration-ms="5031" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[studyFolderName]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="execute_MakeFeature()[pri:4, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:39:31 EEST" name="execute_MakeFeature" description="Execute make a feature command  " finished-at="2022-07-13T18:52:38 EEST" duration-ms="786838" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- execute_MakeFeature -->
+        <test-method signature="execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:52:38 EEST" name="execute_CreateStudy" description="Execute create study command  " finished-at="2022-07-13T18:52:59 EEST" duration-ms="21497" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- execute_CreateStudy -->
+        <test-method signature="deleteFile()[pri:6, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:52:59 EEST" name="deleteFile" description="Delete The created study folder " finished-at="2022-07-13T18:53:04 EEST" duration-ms="5079" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteFile -->
-      </class> <!-- Beyon.Command.Cases.Infill_HappyCase -->
-    </test> <!-- get latest image and open study  -->
+        <test-method is-config="true" signature="stopDriver_push_Report_toS3()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@24be2d9c]" started-at="2022-07-13T18:53:05 EEST" name="stopDriver_push_Report_toS3" finished-at="2022-07-13T18:53:20 EEST" duration-ms="15068" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- stopDriver_push_Report_toS3 -->
+      </class> <!-- Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy -->
+    </test> <!-- TC03_InitializeStudyFolder_CreateStudy  -->
   </suite> <!-- Student Test Suite -->
 </testng-results>

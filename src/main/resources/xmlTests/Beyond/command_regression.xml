@@ -10,14 +10,21 @@
     </listeners>
 
 
-    <test name="get latest image and open study " preserve-order="true">
-<parameter name="getLatest_Image" value="getLatest_Image"></parameter>
-        <parameter name="infill_InitializeStudy" value="infill_InitializeStudy"></parameter>
-        <parameter name="studyFolderName" value="studyFolderName"></parameter>
-        <classes>
-            <class name ="Beyon.Command.Cases.Infill_HappyCase"></class>
-        </classes>
+    <test name="TC02_InitializeStudyFolder_makeFeature " preserve-order="true">
 
-    </test>
-</suite>
+        <classes>
+            <!--    <class name ="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"></class>-->
+             </classes>
+
+
+
+         </test>
+
+         <test name="TC03_InitializeStudyFolder_CreateStudy " preserve-order="true">
+
+         <classes>
+              <class name ="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"></class>
+            </classes>
+            </test>
+        </suite>
 

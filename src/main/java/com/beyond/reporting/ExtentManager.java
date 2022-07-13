@@ -24,7 +24,7 @@ public class ExtentManager extends Base {
 
 
     public static String reportFileNameNew =String.format("%s/%s/%s.html",
-            projectName,dockerImageNumber,jenkins_build);
+            projectName.substring( projectName.lastIndexOf("/") + 1),dockerImageNumber,jenkins_build);
 
     public static String reportImageName = String.format("Beyond-Automation_Img-%s-%s",
             ActionsHelper.getTodayDate(),System.currentTimeMillis());

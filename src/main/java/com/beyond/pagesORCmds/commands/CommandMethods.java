@@ -284,36 +284,45 @@ public class CommandMethods {
 
     }
 
-    public static void RunCommandsInsidContainerUsingLabels(String runCMD_Label) throws IOException, InterruptedException {
 
+    public void RunCommandsInsidContainerUsingLabels(String dockerPath, String projectPath, String
+            latestImage, String command) throws IOException, InterruptedException {
 
-        // String Command = ReadWriteHelper.readCommand(runCMD_Label);
 
         ProcessBuilder processBuilder = new ProcessBuilder();
 
-        processBuilder.command("/usr/local/bin/docker", "exec", "-i", containerID,
-                "infill", runCMD_Label, "--labels", "oil:cumulative,gas:cumulative",
-                "--cv-splits", "10", "--n-periods", "12",
-                "--interpolate-labels").inheritIO();
+        processBuilder.command(dockerPath, "run",
+                "--rm", "-v", projectPath, "-v", "/Volumes:/Volumes", "-p",
+                "8501:8501", "--name=container", latestImage, command,
+                "--labels", "oil:cumulative,gas:cumulative", "--cv-splits",
+                "10", "--n-periods", "12", "--interpolate-labels").inheritIO();
+
+
+        file = new File(System.getProperty("user.dir") +
+                "/src/main/resources/DataProvider/ActualResults.txt");
+
+        processBuilder.redirectErrorStream(true);
+
+        processBuilder.redirectOutput(ProcessBuilder.Redirect.appendTo(file));
 
         Process process = processBuilder.start();
+
+        process.waitFor();
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-        // process.waitFor();
 
         String line;
+
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
 
-        int exitCode = process.waitFor();
-        System.out.println("\nExited with error code : " + exitCode);
-
-        int expectedExistCode = 0;
-        int actualExistCode = exitCode;
-        Assert.assertEquals(expectedExistCode, actualExistCode);
-
+        exitCode = process.waitFor();
+// check if file downloaded
+        ActionsHelper.isFileDownloaded("ActualResults.txt", "false");
     }
+
 
     public static void runTrainModel(String command, String model, String template) throws IOException, InterruptedException {
 

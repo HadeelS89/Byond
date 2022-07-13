@@ -1,8 +1,17 @@
 package com.beyond.common;
 
 
+import com.amazonaws.auth.AWSCredentials;
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.beyond.helpers.ActionsHelper;
 import com.beyond.helpers.ReadWriteHelper;
+import com.beyond.reporting.ExtentManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.comparator.LastModifiedFileComparator;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,12 +25,14 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 @Listeners(com.beyond.reporting.Listeners.class)
 public class Base {
-
+    public static boolean isBase=false;
     public static WebDriver driver;
     public static String environment = "";
     public static String downloadDir = System.getProperty("user.dir") + "\\src\\main\\resources\\DataProvider";
@@ -31,36 +42,36 @@ public class Base {
 
 
     @Parameters({"browserType","url"})
-    @BeforeClass(enabled = true)
+    @BeforeClass(enabled = false)
 
     public void setUpBrowser(@Optional("optional")
                                    String browserType,@Optional("optional") String url) {
+        if(!isBase) {
+
+            String envUrl = System.getProperty("envUrl");
+            System.out.println("-----" + envUrl);
+
+            if (!browserType.equals("optional")) {
+                initiateDriver(OsValidator.getDeviceOs(), browserType);
+                // initiateDriver();
+            } else {
+                initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData("browser"));
+            }
+            // this to determine the url needed
+            // if it not created as param on xml file then use the else
+            if (url.equals("optional")) {// nul default
+                driver.navigate().to(ReadWriteHelper.ReadData("InfillURL"));
 
 
-    String envUrl = System.getProperty("envUrl");
-    System.out.println("-----" + envUrl);
+                ReadWriteHelper.writeEnvironment(environment);
+                System.out.println("environment = " + environment);
+            } else {// from pom.xm then mvn -D
 
-    if (!browserType.equals("optional")) {
-        initiateDriver(OsValidator.getDeviceOs(), browserType);
-        // initiateDriver();
-    } else {
-        initiateDriver(OsValidator.getDeviceOs(), ReadWriteHelper.ReadData("browser"));
-    }
-    // this to determine the url needed
-    // if it not created as param on xml file then use the else
-    if (url.equals("optional")) {// nul default
-        driver.navigate().to(ReadWriteHelper.ReadData("InfillURL"));
+                driver.navigate().to(envUrl);
+            }
 
-
-        ReadWriteHelper.writeEnvironment(environment);
-        System.out.println("environment = " + environment);
-    } else {// from pom.xm then mvn -D
-
-        driver.navigate().to(envUrl);
-    }
-
-
-}//end is web
+        }
+}
 
 
     public WebDriver initiateDriver()
@@ -199,13 +210,39 @@ public class Base {
     }
 
 
-   //  @AfterClass(enabled = true)
-    public void stopDriver() {
+    @AfterSuite(enabled = true)
+    public void stopDriver_push_Report_toS3() throws InterruptedException {
         try {
-            driver.quit();
+          //  driver.quit();
         } catch (Throwable e) {
             e.getStackTrace();
         }
+
+
+        ActionsHelper.isFileDownloaded(ExtentManager.reportFileName,"false");
+        Thread.sleep(10000);
+        String reportPath = "src/main/resources/Reports/" + ExtentManager.reportFileName;
+
+        // uncomment AWS righter
+        AWSCredentials credentials = new BasicAWSCredentials(
+                ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "username"),
+                ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "password")
+        );
+        final AmazonS3 s3client = AmazonS3ClientBuilder
+                .standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withRegion(Regions.EU_WEST_1)
+                .build();
+
+
+
+
+        s3client.putObject("bl-mlops-qa-reports-website",
+                "reports/"+ ExtentManager.reportFileNameNew,
+                new File(reportPath));
+
+        System.out.println("s3 report "+ExtentManager.reportFileNameNew);
+
     }
 
 }

@@ -50,11 +50,7 @@ public class Listeners extends TestListenerAdapter {
 
 
 
-//    @Parameters({"PROJECT_NAME","BUILD_NUMBER"})
-//    public  Listeners(String PROJECT_NAME, String BUILD_NUMBER) throws MessagingException, GeneralSecurityException {
-//
-//         extent = ExtentManager.createInstance( PROJECT_NAME, BUILD_NUMBER);
-//    }
+
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
     ExceptionListner exceptionListener = new ExceptionListner();
     public static boolean CONSOLE;
@@ -82,7 +78,7 @@ public class Listeners extends TestListenerAdapter {
 
 
 
-        String reportPath = "src/main/resources/Reports/" + ExtentManager.reportFileName;
+
 
         /*
 
@@ -106,33 +102,19 @@ public class Listeners extends TestListenerAdapter {
 
 
          */
+
+
 /*
-            // uncomment AWS righter
-            AWSCredentials credentials = new BasicAWSCredentials(
-                    ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "username"),
-                    ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "password")
-            );
-            final AmazonS3 s3client = AmazonS3ClientBuilder
-                    .standard()
-                    .withCredentials(new AWSStaticCredentialsProvider(credentials))
-                    .withRegion(Regions.EU_WEST_1)
-                    .build();
-
-
-
-
         s3client.putObject("bl-mlops-qa-reports-website",
-                "reports/"+ExtentManager.reportFileNameNew,
-                new File(reportPath));
-
-        System.out.println("s3 report "+ExtentManager.reportFileNameNew);
-
-
-
-
+                "reports/"+projectName+"/"+dockerImageNumber+"/"+jenkinsRunNumber +".html",
+                new File(theNewestFile.getName(),
+                        "/test-output/SparkReport/Spark.html"));
 
 
  */
+
+
+
 
 
 
@@ -148,10 +130,7 @@ public class Listeners extends TestListenerAdapter {
         }
         ExtentTest extentTest = extent.createTest(result.getMethod().getDescription(),
                 result.getMethod().getMethodName());
-        ExtentTest extentTest2 = extent.createTest(result.getTestClass().getXmlClass().getName(),
-                result.getMethod().getDescription());
 
-       // System.out.println("extent output " + extentTest2);
         test.set(extentTest);
 
     }
@@ -225,12 +204,37 @@ if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
         }
 
     }
-
+/*
     public static void main(String[] args) {
 //        String reportPath = "src/main/resources/Reports/" + "QPros-Automation_Report-2020-12-30-1609364868568.html";
-//        EmailHelper.sendEmail("mohaidat89@gmail.com", reportPath);
+        String reportPath = "src/main/resources/Reports/Byond-100-latest-2022-07-13.html";
+
+        // uncomment AWS righter
+        AWSCredentials credentials = new BasicAWSCredentials(
+                ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "username"),
+                ReadWriteHelper.readCredentialsXMLFile("SWS_S3", "password")
+        );
+        final AmazonS3 s3client = AmazonS3ClientBuilder
+                .standard()
+                .withCredentials(new AWSStaticCredentialsProvider(credentials))
+                .withRegion(Regions.EU_WEST_1)
+                .build();
+          String reportFileNameNew =
+                "infill-advisor-ds"+"/"+"latest"+"/"+"140.html";
+        //https://reports.mlops.beyond.ai/reports/infill-advisor-ds/726/120.html
+
+//https://reports.mlops.beyond.ai/reports/registry.infill.beyond.ai/infill-advisor-ds/120.html
+
+        s3client.putObject("bl-mlops-qa-reports-website",
+                "reports/"+reportFileNameNew,
+                new File(reportPath));
+
+        System.out.println("s3 report "+reportFileNameNew);
+
     }
 
+
+ */
 
     public static String takeScreenShot(ITestResult result) {
 

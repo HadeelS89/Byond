@@ -1,4 +1,5 @@
 Beyon/Command/Cases/TestFirstcmd3.class
 Beyond/Web/cases/InfillAdvisorTest.class
 Beyon/Command/Cases/TC01_EdgeCase_RidgeModel.class
-Beyon/Command/Cases/Infill_HappyCase.class
+Beyon/Command/Cases/TC02_InitializeStudyFolder_makeFeature.class
+Beyon/Command/Cases/TC03_InitializeStudyFolder_CreateStudy.class
