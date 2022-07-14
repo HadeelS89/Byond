@@ -218,9 +218,18 @@ public class Base {
             e.getStackTrace();
         }
 
+try {
+    ActionsHelper.isFileDownloaded(ExtentManager.reportFileName,"false");
+    Thread.sleep(15000);
+}catch (Exception e)
+{
 
-        ActionsHelper.isFileDownloaded(ExtentManager.reportFileName,"false");
-        Thread.sleep(10000);
+    Thread.sleep(10000);
+    ActionsHelper.isFileDownloaded(ExtentManager.reportFileName,"false");
+}
+
+
+        System.out.println(ExtentManager.reportFileName);
         String reportPath = "src/main/resources/Reports/" + ExtentManager.reportFileName;
 
         // uncomment AWS righter

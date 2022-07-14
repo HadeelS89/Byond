@@ -18,7 +18,7 @@
     </run>
     </groups>
         <classes>
-            <class name ="Beyon.Command.Cases.TC02_InitializeStudyFolder_makeFeature"></class>
+            <class name ="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"></class>
         </classes>
     </test>
 </suite>

@@ -38,7 +38,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
 
      */
 
-    @Test(description = "get latest image from docker file  ", priority = 0)
+    @Test(groups = {"smoke"},description = "get latest image from docker file  ", priority = 0)
     public void getLatestImage() throws Exception {
 
         commandMethods = new CommandMethods();
@@ -53,7 +53,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
 
 
 
-  //  @Test(description = "Execute initialize study command  ", priority = 1)
+    @Test(groups = {"smoke"},description = "Execute initialize study command  ", priority = 1)
     public void initialise_Study() throws Exception {
 
         commandMethods = new CommandMethods();
@@ -73,7 +73,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
     }
 
 
-    //@Test(description = "Verify the study folder is created ", priority = 2)
+    @Test(groups = {"smoke"},description = "Verify the study folder is created ", priority = 2)
     public void verifyStudyFolder() throws Exception {
 
 // return true if file here
@@ -82,7 +82,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
 
 
 
-    //@Test(description = "Copy dataset from NAS drive ", priority = 3)
+    @Test(groups = {"smoke"},description = "Copy dataset from NAS drive ", priority = 3)
     public void copyFile() throws Exception {
 
 // return true if file here
@@ -94,7 +94,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
 
 
 
-    //@Test(description = "Execute make a feature command  ", priority = 4)
+    @Test(groups = {"smoke"},description = "Execute make a feature command  ", priority = 4)
     public void execute_MakeFeature() throws Exception {
 
         commandMethods = new CommandMethods();
@@ -112,7 +112,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
         commandMethods.file.delete();// delete the file
     }
 
-    //@Test(description = "Execute create study command  ", priority = 5)
+    @Test(groups = {"Regression"},description = "Execute create study command  ", priority = 5)
     public void execute_CreateStudy() throws Exception {
 
         commandMethods = new CommandMethods();
@@ -130,7 +130,7 @@ public class TC03_InitializeStudyFolder_CreateStudy extends Base {
         commandMethods.file.delete();// delete the file
     }
 
-   // @Test(description = "Delete The created study folder ", priority = 6)
+    @Test(groups = {"smoke"},description = "Delete The created study folder ", priority = 6)
     public void deleteFile() throws Exception {
         FileUtils.forceDelete(new File("src/main/resources/DataProvider/" + Data_cmd.studyFolderName));
         Thread.sleep(3000);
