@@ -42,7 +42,7 @@ public class Base {
 
 
     @Parameters({"browserType","url"})
-    @BeforeClass(enabled = false)
+    @BeforeMethod(enabled = false)
 
     public void setUpBrowser(@Optional("optional")
                                    String browserType,@Optional("optional") String url) {
@@ -242,15 +242,18 @@ try {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(Regions.EU_WEST_1)
                 .build();
+         String dockerImageNumber = System.getProperty("image_name","test");//TAG//this need to be added
+         String projectName = System.getProperty("project_name","test");//image name
+         String  jenkins_build=System.getProperty("build_number","12");//
 
-
-
+         String reportFileNameNew =String.format("%s/%s/%s.html",
+                projectName.substring( projectName.lastIndexOf("/") + 1),dockerImageNumber,jenkins_build);
 
         s3client.putObject("bl-mlops-qa-reports-website",
-                "reports/"+ ExtentManager.reportFileNameNew,
+                "reports/"+ reportFileNameNew,
                 new File(reportPath));
 
-        System.out.println("s3 report "+ExtentManager.reportFileNameNew);
+        System.out.println("s3 report "+reportFileNameNew);
 
     }
 

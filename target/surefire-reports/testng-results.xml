@@ -2,51 +2,67 @@
 <testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-14T01:12:57 EEST" name="Student Test Suite" finished-at="2022-07-14T01:30:15 EEST" duration-ms="1038145">
+  <suite started-at="2022-07-14T14:51:07 EEST" name="Student Test Suite" finished-at="2022-07-14T15:14:04 EEST" duration-ms="1377535">
     <groups>
       <group name="Regression">
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="execute_CreateStudy" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
+        <method signature="TC006_ExecuteCreateStudyCommand.execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC006_ExecuteCreateStudyCommand@2b5cb9b2]" name="execute_CreateStudy" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC006_ExecuteCreateStudyCommand"/>
       </group> <!-- Regression -->
       <group name="smoke">
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.copyFile()[pri:3, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="copyFile" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.deleteFile()[pri:6, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="deleteFile" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.execute_MakeFeature()[pri:4, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="execute_MakeFeature" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="getLatestImage" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="initialise_Study" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
-        <method signature="TC03_InitializeStudyFolder_CreateStudy.verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" name="verifyStudyFolder" class="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy"/>
+        <method signature="TC001_GetLatestImageFromDockerFile.getLatestImage()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile@30b34287]" name="getLatestImage" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile"/>
+        <method signature="TC002_ExecuteInitializeStudyCommand.initialise_Study()[pri:1, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC002_ExecuteInitializeStudyCommand@158d255c]" name="initialise_Study" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC002_ExecuteInitializeStudyCommand"/>
+        <method signature="TC003_VerifyThatStudyFolderCreated.verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC003_VerifyThatStudyFolderCreated@2ca65ce4]" name="verifyStudyFolder" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC003_VerifyThatStudyFolderCreated"/>
+        <method signature="TC004_CopyDatasetFromNASDrive.copyFile()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC004_CopyDatasetFromNASDrive@327120c8]" name="copyFile" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC004_CopyDatasetFromNASDrive"/>
+        <method signature="TC005_ExecuteMakeFeatureCommand.execute_MakeFeature()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC005_ExecuteMakeFeatureCommand@5707c1cb]" name="execute_MakeFeature" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC005_ExecuteMakeFeatureCommand"/>
+        <method signature="TC007_DeleteTheCreatedStudyFolder.deleteFile()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC007_DeleteTheCreatedStudyFolder@35038141]" name="deleteFile" class="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC007_DeleteTheCreatedStudyFolder"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2022-07-14T01:12:57 EEST" name="TC02_InitializeStudyFolder_makeFeature regression test " finished-at="2022-07-14T01:30:15 EEST" duration-ms="1038145">
-      <class name="Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy">
-        <test-method signature="getLatestImage()[pri:0, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:12:57 EEST" name="getLatestImage" description="get latest image from docker file  " finished-at="2022-07-14T01:13:00 EEST" duration-ms="2751" status="PASS">
+    <test started-at="2022-07-14T14:51:07 EEST" name="Initialize and create study test  " finished-at="2022-07-14T15:14:04 EEST" duration-ms="1377535">
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile">
+        <test-method signature="getLatestImage()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile@30b34287]" started-at="2022-07-14T14:51:07 EEST" name="getLatestImage" description="TC001: get latest image from docker file  " finished-at="2022-07-14T14:51:10 EEST" duration-ms="2862" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getLatestImage -->
-        <test-method signature="initialise_Study()[pri:1, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:13:00 EEST" name="initialise_Study" description="Execute initialize study command  " finished-at="2022-07-14T01:13:22 EEST" duration-ms="22019" status="PASS">
+        <test-method is-config="true" signature="stopDriver_push_Report_toS3()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile@30b34287]" started-at="2022-07-14T15:14:05 EEST" name="stopDriver_push_Report_toS3" finished-at="2022-07-14T15:14:35 EEST" duration-ms="29638" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initialise_Study -->
-        <test-method signature="verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:13:22 EEST" name="verifyStudyFolder" description="Verify the study folder is created " finished-at="2022-07-14T01:13:25 EEST" duration-ms="3025" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStudyFolder -->
-        <test-method signature="copyFile()[pri:3, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:13:25 EEST" name="copyFile" description="Copy dataset from NAS drive " finished-at="2022-07-14T01:13:26 EEST" duration-ms="1602" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- copyFile -->
-        <test-method signature="execute_MakeFeature()[pri:4, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:13:26 EEST" name="execute_MakeFeature" description="Execute make a feature command  " finished-at="2022-07-14T01:29:48 EEST" duration-ms="982225" status="PASS">
+        </test-method> <!-- stopDriver_push_Report_toS3 -->
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC001_GetLatestImageFromDockerFile -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC005_ExecuteMakeFeatureCommand">
+        <test-method signature="execute_MakeFeature()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC005_ExecuteMakeFeatureCommand@5707c1cb]" started-at="2022-07-14T14:51:37 EEST" name="execute_MakeFeature" description="Execute make a feature command  " finished-at="2022-07-14T15:13:37 EEST" duration-ms="1320508" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- execute_MakeFeature -->
-        <test-method signature="execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:29:48 EEST" name="execute_CreateStudy" description="Execute create study command  " finished-at="2022-07-14T01:30:10 EEST" duration-ms="21364" status="PASS">
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC005_ExecuteMakeFeatureCommand -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC004_CopyDatasetFromNASDrive">
+        <test-method signature="copyFile()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC004_CopyDatasetFromNASDrive@327120c8]" started-at="2022-07-14T14:51:35 EEST" name="copyFile" description="Copy dataset from NAS drive " finished-at="2022-07-14T14:51:37 EEST" duration-ms="1587" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- copyFile -->
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC004_CopyDatasetFromNASDrive -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC006_ExecuteCreateStudyCommand">
+        <test-method signature="execute_CreateStudy()[pri:5, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC006_ExecuteCreateStudyCommand@2b5cb9b2]" started-at="2022-07-14T15:13:37 EEST" name="execute_CreateStudy" description="Execute create study command  " finished-at="2022-07-14T15:13:59 EEST" duration-ms="22257" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- execute_CreateStudy -->
-        <test-method signature="deleteFile()[pri:6, instance:Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy@4d411036]" started-at="2022-07-14T01:30:10 EEST" name="deleteFile" description="Delete The created study folder " finished-at="2022-07-14T01:30:15 EEST" duration-ms="5056" status="PASS">
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC006_ExecuteCreateStudyCommand -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC003_VerifyThatStudyFolderCreated">
+        <test-method signature="verifyStudyFolder()[pri:2, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC003_VerifyThatStudyFolderCreated@2ca65ce4]" started-at="2022-07-14T14:51:32 EEST" name="verifyStudyFolder" description="Verify the study folder is created " finished-at="2022-07-14T14:51:35 EEST" duration-ms="3025" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyStudyFolder -->
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC003_VerifyThatStudyFolderCreated -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC007_DeleteTheCreatedStudyFolder">
+        <test-method signature="deleteFile()[pri:0, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC007_DeleteTheCreatedStudyFolder@35038141]" started-at="2022-07-14T15:13:59 EEST" name="deleteFile" description="Delete The created study folder " finished-at="2022-07-14T15:14:04 EEST" duration-ms="5081" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- deleteFile -->
-      </class> <!-- Beyon.Command.Cases.TC03_InitializeStudyFolder_CreateStudy -->
-    </test> <!-- TC02_InitializeStudyFolder_makeFeature regression test  -->
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC007_DeleteTheCreatedStudyFolder -->
+      <class name="Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC002_ExecuteInitializeStudyCommand">
+        <test-method signature="initialise_Study()[pri:1, instance:Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC002_ExecuteInitializeStudyCommand@158d255c]" started-at="2022-07-14T14:51:10 EEST" name="initialise_Study" description="TC002: Execute initialize study command  " finished-at="2022-07-14T14:51:32 EEST" duration-ms="22127" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialise_Study -->
+      </class> <!-- Beyon.Command.Cases.IniliazeAndCreateStudyTest.TC002_ExecuteInitializeStudyCommand -->
+    </test> <!-- Initialize and create study test   -->
   </suite> <!-- Student Test Suite -->
 </testng-results>

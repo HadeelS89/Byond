@@ -15,6 +15,7 @@ import org.testng.TestListenerAdapter;
 import javax.mail.MessagingException;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
 public class Listeners extends TestListenerAdapter {
@@ -51,6 +52,8 @@ public class Listeners extends TestListenerAdapter {
 
             System.out.println("Test Suite started!");
         }
+        ExtentTest extentTest = extent.createTest(context.getName());
+        test.set(extentTest);
 
        // extent.add("Executing " + context.getCurrentXmlTest().getName());
     }
@@ -104,11 +107,6 @@ public class Listeners extends TestListenerAdapter {
 
  */
 
-
-
-
-
-
     }
 
     @Override
@@ -120,10 +118,9 @@ public class Listeners extends TestListenerAdapter {
 
         }
 
-        ExtentTest extentTest = extent.createTest(result.getMethod().getDescription(),
-                result.getMethod().getMethodName()).assignCategory(result.getMethod().getGroups());
+//        ExtentTest extentTest = extent.createTest(result.getMethod().getDescription(),
+//                result.getMethod().getMethodName());
 
-        test.set(extentTest);
 
 
     }
@@ -135,7 +132,9 @@ public class Listeners extends TestListenerAdapter {
             System.out.println((result.getMethod().getMethodName() + " passed!"));
         }
 
-        test.get().pass("Test passed");
+        String logText1 = "<b>`Test Case: </b>" + result.getMethod().getDescription();
+
+        test.get().pass(logText1);
     }
 
     @SneakyThrows
@@ -144,8 +143,12 @@ public class Listeners extends TestListenerAdapter {
         if (CONSOLE) {
             System.out.println((result.getMethod().getMethodName() + " failed!"));
         }
+        String exceptionMessage = result.getThrowable().getMessage();
 
-        test.get().fail(exceptionListener.checkException(result.getThrowable().toString()));
+        String logText1 = "<b>Test Case: </b>" + result.getMethod().getDescription();
+        String description = logText1 + "<details><summary><b><font color=red>" + "Click to see details:" +
+                "</font></b></summary>" + exceptionMessage.replaceAll(",", "<br>") + "</details> \n";
+        test.get().fail(description);
 
 
 /*
@@ -159,11 +162,6 @@ if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
 
     try {
 
-        FileUtils.copyFile(srcFile, new File(
-                "src/main/resources/Reports/" + ExtentManager.reportFileName+"_" + result.
-                        getName() + ".PNG"));
-    } catch (IOException e) {
-        e.printStackTrace();
     }
 
     // takeScreenShot(result);
@@ -181,19 +179,19 @@ if(ReadWriteHelper.ReadData("isWebProject").equalsIgnoreCase("true")) {
 
     @Override
     public synchronized void onTestSkipped(ITestResult result) {
-        if (CONSOLE) {
-            System.out.println((result.getMethod().getMethodName() + " skipped!"));
-        }
-        test.get().skip(exceptionListener.checkException(result.getThrowable().toString()));
+
     }
 
-    @SneakyThrows
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
         if (CONSOLE) {
             System.out.println(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
-            ScreenshotHelper.takeScreenShot(
-            );
+            try {
+                ScreenshotHelper.takeScreenShot(
+                );
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

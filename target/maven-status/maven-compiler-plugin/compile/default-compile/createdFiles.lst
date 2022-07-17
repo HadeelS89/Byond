@@ -17,7 +17,6 @@ com/beyond/helpers/DataBaseHelper.class
 com/beyond/utils/RandomString.class
 com/beyond/pagesORCmds/Data_cmd.class
 com/beyond/helpers/ReadFromExcel.class
-com/beyond/reporting/ExtentTestManager.class
 com/beyond/pagesORCmds/Data.class
 com/beyond/helpers/DBHelper.class
 com/beyond/helpers/ActionsHelper.class

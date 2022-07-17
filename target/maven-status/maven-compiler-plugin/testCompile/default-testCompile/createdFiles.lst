@@ -1,5 +1,12 @@
 Beyon/Command/Cases/TestFirstcmd3.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC004_CopyDatasetFromNASDrive.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC001_GetLatestImageFromDockerFile.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC007_DeleteTheCreatedStudyFolder.class
 Beyond/Web/cases/InfillAdvisorTest.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC002_ExecuteInitializeStudyCommand.class
 Beyon/Command/Cases/TC01_EdgeCase_RidgeModel.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC005_ExecuteMakeFeatureCommand.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC006_ExecuteCreateStudyCommand.class
+Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC003_VerifyThatStudyFolderCreated.class
 Beyon/Command/Cases/TC02_InitializeStudyFolder_makeFeature.class
 Beyon/Command/Cases/TC03_InitializeStudyFolder_CreateStudy.class

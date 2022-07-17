@@ -16,15 +16,14 @@ public class ExtentManager extends Base {
 
 
 // add environment param to java project m
-    private  static String dockerImageNumber = System.getProperty("image_name");//TAG//this need to be added
-    static String projectName = System.getProperty("project_name");//image name
+    private  static String dockerImageNumber = System.getProperty("image_name","test");//TAG//this need to be added
+    static String projectName = System.getProperty("project_name","Beyond");//image name
     static String  jenkins_build=System.getProperty("build_number","12");//
     private static ExtentReports extent;
     private static String reportClassName;
 
 
-    public static String reportFileNameNew =String.format("%s/%s/%s.html",
-            projectName.substring( projectName.lastIndexOf("/") + 1),dockerImageNumber,jenkins_build);
+
 
     public static String reportImageName = String.format("Beyond-Automation_Img-%s-%s",
             ActionsHelper.getTodayDate(),System.currentTimeMillis());
@@ -35,10 +34,9 @@ public class ExtentManager extends Base {
 
 
     public static String reportFileName = String.format("%s-%s-%s-%s.html",//%s_%s_%sReport-%s-%s.html"
-            ActionsHelper.projectName(),jenkins_build,dockerImageNumber,ActionsHelper.getTodayDate());
+            ActionsHelper.projectName(),"h","111",ActionsHelper.getTodayDate());
     public static ExtentReports createInstance() throws GeneralSecurityException, MessagingException {
-        StateHelper.setStepState("reportName",
-                reportFileName);
+
 
         ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(path +reportFileName);
 
@@ -55,6 +53,8 @@ public class ExtentManager extends Base {
         extent.attachReporter(htmlReporter);
         extent.setSystemInfo("project name ",projectName);
         extent.setSystemInfo("Docker build number",dockerImageNumber);
+        extent.setSystemInfo("Reporter ","Hadeel Salameh");
+
 
 
 

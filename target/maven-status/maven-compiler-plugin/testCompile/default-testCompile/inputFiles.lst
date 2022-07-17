@@ -1,5 +1,12 @@
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/TC01_EdgeCase_RidgeModel.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC003_VerifyThatStudyFolderCreated.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC007_DeleteTheCreatedStudyFolder.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/TC02_InitializeStudyFolder_makeFeature.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC005_ExecuteMakeFeatureCommand.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/TC03_InitializeStudyFolder_CreateStudy.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/TestFirstcmd3.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC001_GetLatestImageFromDockerFile.java
 /Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyond/Web/cases/InfillAdvisorTest.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC002_ExecuteInitializeStudyCommand.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC004_CopyDatasetFromNASDrive.java
+/Users/hsalameh/Desktop/myFrameWork/Byond/src/test/java/Beyon/Command/Cases/IniliazeAndCreateStudyTest/TC006_ExecuteCreateStudyCommand.java
